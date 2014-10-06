@@ -1,0 +1,62 @@
+<div class="product-main">
+	<div class="row">
+		<div class="col-md-6 col-sm-6"> 
+			<!-- Image -->
+			<div class="product-images">
+				<div class="product-image">
+					<img src="graphics/en-US/cssui/blank.gif" alt="&mvte:product:name;" title="&mvte:product:name;" id="main_image" class="aligncenter" />
+				</div>
+				<ul id="thumbnails" class="thumbnails"></ul>
+			</div>
+		</div>
+		<div class="col-md-6 col-sm-6"> 
+			<!-- Title -->
+			<h3>Price: <span id="price-value">&mvt:product:formatted_price;</span></h3>
+			<mvt:if expr="l.settings:product:sku">
+				<p>Code: &mvt:product:sku;</p>
+			<mvt:else>
+				<p>Code: &mvt:product:code;</p>
+			</mvt:if>
+			<mvt:if expr="l.settings:product:weight NE 0">
+				<p>Weight: &mvt:product:weight; &mvt:store:wtunits;</p>
+			</mvt:if>
+			<mvt:if expr="l.settings:product:inv_active">
+				<p id="inventory-message">&mvt:product:inv_long;</p>
+			</mvt:if>
+			<form method="post" action="&mvt:global:sessionurl;Screen=BASK" class="form-horizontal" role="form">
+				<input type="hidden" name="Old_Screen" value="&mvte:global:Screen;" />
+				<input type="hidden" name="Old_Search" value="&mvte:global:Search;" />
+				<input type="hidden" name="Action" value="ADPR" />
+				<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+				<input type="hidden" name="Product_Code" value="&mvte:product:code;" />
+				<input type="hidden" name="Category_Code" value="&mvte:global:category_code;" />
+				<input type="hidden" name="Offset" value="&mvte:global:Offset;" />
+				<input type="hidden" name="AllOffset" value="&mvte:global:AllOffset;" />
+				<input type="hidden" name="CatListingOffset" value="&mvte:global:CatListingOffset;" />
+				<input type="hidden" name="RelatedOffset" value="&mvte:global:RelatedOffset;" />
+				<input type="hidden" name="SearchOffset" value="&mvte:global:SearchOffset;" />
+				<div id="swatches" class="swatches"></div>
+				<div class="product-attributes">
+					<mvt:item name="product_attributes" param="product:id" file="PROD-product_attributes-item.htm" />
+				</div>
+				<div class="form-group">
+					<label for="product-quantity" title="Quantity" class="col-md-3 col-sm-12 col-xs-12 control-label">Quantity:</label>
+					<div class="col-md-3 col-sm-4 col-xs-3">
+						<input type="text" name="Quantity" value="1" id="product-quantity" class="form-control text-center" />
+					</div>
+					<div class="col-md-6 col-sm-7 col-xs-9">
+						<mvt:item name="buttons" param="AddToBasket" file="cssui-buttonAddToBasket-item.htm" />
+					</div>
+				</div>
+			</form>
+
+                        <mvt:item name="readytheme" param="thirdpartysharing" />
+		</div>
+	</div>
+</div>
+<br />
+<!-- Description, specs and review -->
+<mvt:if expr="l.settings:product:descrip">
+	<h5 class="title">&mvt:product:name;</h5>
+	<div class="col-md-13">&mvt:product:descrip;</div>
+</mvt:if>

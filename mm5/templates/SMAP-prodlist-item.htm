@@ -1,0 +1,30 @@
+<div id="sitemap">
+<mvt:if expr="l.settings:category_count GT 0">
+<h2>Categories:</h2>
+<mvt:foreach iterator="category" array="categories">
+<mvt:if expr="(pos1 MOD 3) EQ 1">
+<div class="clear"></div>
+</mvt:if>
+<div class="category">
+<div class="padding">
+<a href="&mvt:category:link;">&mvt:category:name;</a>
+</div>
+</div>
+</mvt:foreach>
+<div class="clear"></div>
+</mvt:if>
+<mvt:if expr="l.settings:product_count GT 0">
+<h2>Products:</h2>
+<mvt:foreach iterator="product" array="products">
+<mvt:if expr="(pos1 MOD 3) EQ 1">
+<div class="clear"></div>
+</mvt:if>
+<div class="product">
+<div class="padding">
+<a href="&mvt:product:link;">&mvt:product:name;</a>
+</div>
+</div>
+</mvt:foreach>
+<div class="clear"></div>
+</mvt:if>
+</div>

@@ -1,0 +1,102 @@
+<div id="ship-to" class="col-md-6 col-sm-6 col-xs-12">
+	<h3 class="title">Ship To:</h3>
+	<mvt:if expr="g.Basket:ship_fname OR g.Basket:ship_lname">
+		<div class="form-group col-md-12 col-sm-12 col-xs-12">
+			<label class="col-lg-3 col-md-4 col-sm-6 col-xs-12 control-label">Name:</label>
+			<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12 form-control-static">&mvte:global:Basket:ship_fname; &mvte:global:Basket:ship_lname;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="g.Basket:ship_email">
+		<div class="form-group col-md-12 col-sm-12 col-xs-12">
+			<label class="col-lg-3 col-md-4 col-sm-6 col-xs-12 control-label">Email Address:</label>
+			<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12 form-control-static">&mvte:global:Basket:ship_email;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="g.Basket:ship_phone">
+		<div class="form-group col-md-12 col-sm-12 col-xs-12">
+			<label class="col-lg-3 col-md-4 col-sm-6 col-xs-12 control-label">Phone Number:</label>
+			<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12 form-control-static">&mvte:global:Basket:ship_phone;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="g.Basket:ship_fax">
+		<div class="form-group col-md-12 col-sm-12 col-xs-12">
+			<label class="col-lg-3 col-md-4 col-sm-6 col-xs-12 control-label">Fax Number:</label>
+			<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12 form-control-static">&mvte:global:Basket:ship_fax;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="g.Basket:ship_comp">
+		<div class="form-group col-md-12 col-sm-12 col-xs-12">
+			<label class="col-lg-3 col-md-4 col-sm-6 col-xs-12 control-label">Company:</label>
+			<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12 form-control-static">&mvte:global:Basket:ship_comp;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="g.Basket:ship_addr1 OR g.Basket:ship_addr2 OR g.Basket:ship_city OR g.Basket:ship_state OR g.Basket:ship_zip OR g.Basket:ship_cntry">
+		<div class="form-group col-md-12 col-sm-12 col-xs-12">
+			<label class="col-lg-3 col-md-4 col-sm-6 col-xs-12 control-label">Address:</label>
+			<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12 form-control-static">
+				&mvte:global:Basket:ship_addr1;<br />
+				<mvt:if expr="g.Basket:ship_addr2">
+					&mvte:global:Basket:ship_addr2;<br />
+				</mvt:if>
+				<mvt:if expr="( NOT ISNULL g.Basket:ship_city ) AND ( NOT ISNULL g.Basket:ship_state )">
+					&mvte:global:Basket:ship_city;,
+				<mvt:else>
+					&mvte:global:Basket:ship_city;
+				</mvt:if>
+				&mvte:global:Basket:ship_state; &mvte:global:Basket:ship_zip;<br />
+				&mvte:global:Basket:ship_cntry;
+			</div>
+		</div>
+	</mvt:if>
+</div>
+<div id="bill-to" class="col-md-6 col-sm-6 col-xs-12">
+	<h3 class="title">Bill To:</h3>
+	<mvt:if expr="g.Basket:bill_fname OR g.Basket:bill_lname">
+		<div class="form-group col-md-12 col-sm-12 col-xs-12">
+			<label class="col-lg-3 col-md-4 col-sm-6 col-xs-12 control-label">Name:</label>
+			<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12 form-control-static">&mvte:global:Basket:bill_fname; &mvte:global:Basket:bill_lname;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="g.Basket:bill_email">
+		<div class="form-group col-md-12 col-sm-12 col-xs-12">
+			<label class="col-lg-3 col-md-4 col-sm-6 col-xs-12 control-label">Email Address:</label>
+			<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12 form-control-static">&mvte:global:Basket:bill_email;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="g.Basket:bill_phone">
+		<div class="form-group col-md-12 col-sm-12 col-xs-12">
+			<label class="col-lg-3 col-md-4 col-sm-6 col-xs-12 control-label">Phone Number:</label>
+			<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12 form-control-static">&mvte:global:Basket:bill_phone;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="g.Basket:bill_fax">
+		<div class="form-group col-md-12 col-sm-12 col-xs-12">
+			<label class="col-lg-3 col-md-4 col-sm-6 col-xs-12 control-label">Fax Number:</label>
+			<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12 form-control-static">&mvte:global:Basket:bill_fax;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="g.Basket:bill_comp">
+		<div class="form-group col-md-12 col-sm-12 col-xs-12">
+			<label class="col-lg-3 col-md-4 col-sm-6 col-xs-12 control-label">Company:</label>
+			<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12 form-control-static">&mvte:global:Basket:bill_comp;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="g.Basket:bill_addr1 OR g.Basket:bill_addr2 OR g.Basket:bill_city OR g.Basket:bill_state OR g.Basket:bill_zip OR g.Basket:bill_cntry">
+		<div class="form-group col-md-12 col-sm-12 col-xs-12">
+			<label class="col-lg-3 col-md-4 col-sm-6 control-label">Address:</label>
+			<div class="col-lg-9 col-md-8 col-sm-6 col-xs-12 form-control-static">
+				&mvte:global:Basket:bill_addr1;<br />
+				<mvt:if expr="g.Basket:bill_addr2">
+					&mvte:global:Basket:bill_addr2;<br />
+				</mvt:if>
+				<mvt:if expr="( NOT ISNULL g.Basket:bill_city ) AND ( NOT ISNULL g.Basket:bill_state )">
+					&mvte:global:Basket:bill_city;,
+				<mvt:else>
+					&mvte:global:Basket:bill_city;
+				</mvt:if>
+				&mvte:global:Basket:bill_state; &mvte:global:Basket:bill_zip;<br />
+				&mvte:global:Basket:bill_cntry;
+			</div>
+		</div>
+	</mvt:if>
+</div>

@@ -1,0 +1,59 @@
+<mvt:item name="html_profile" file="cssui-html-profile-item.htm" />
+<head>
+	<title>&mvt:store:name;: Missing Product Attributes</title>
+	<base href="&mvt:global:basehref;" />
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" file="cssui-global-head-item.htm" />
+</head>
+<body class="&mvt:page:code;" id="JS_&mvt:page:code;">
+<div id="site-container">
+	<mvt:item name="hdft" param="global_header" file="global-header-item.htm" />
+	<mvt:item name="navbar" file="cssui-navbar-item.htm" />
+	<mvt:item name="hdft" param="header" file="UATR-header-item.htm" />
+	<div class="items">
+		<div class="page-head">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>Special Offer: &mvte:product:name;</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-sm-3 hidden-xs">
+						<mvt:item name="category_tree" file="" />
+					</div>
+					<div class="col-md-9 col-sm-9">
+						<mvt:item name="breadcrumbs" />
+						<mvt:if expr="l.settings:messages:error_message_count">
+							<div class="alert alert-warning">
+								<mvt:foreach iterator="error" array="messages:error_messages">
+									&mvt:error;<br />
+								</mvt:foreach>
+							</div>
+						</mvt:if>
+						<form method="post" action="&mvt:global:secure_sessionurl;Screen=&mvte:global:Screen;" class="form-horizontal" role="form">
+							<input type="hidden" name="Action" value="&mvte:global:Action;" />
+							<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+							<input type="hidden" name="Product_Code" value="&mvte:product:code;" />
+							<mvt:item name="tax" />
+							<div class="product-attributes">
+								<mvt:item name="product_attributes" param="product:id" file="UATR-product_attributes-item.htm" />
+							</div>
+							<div class="form-group pull-right">
+								<mvt:item name="buttons" param="Continue" file="cssui-buttonContinue-item.htm" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<mvt:item name="hdft" param="footer" file="UATR-footer-item.htm" />
+	<mvt:item name="hdft" param="global_footer" file="global-footer-item.htm" />
+</div>
+</body>
+</html>

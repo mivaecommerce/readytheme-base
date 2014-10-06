@@ -1,0 +1,98 @@
+<mvt:item name="html_profile" file="cssui-html-profile-item.htm" />
+<head>
+	<title>&mvt:store:name;: Checkout: Shipping/Payment Selection</title>
+	<base href="&mvt:global:basehref;" />
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" file="cssui-global-head-item.htm" />
+</head>
+<body class="&mvt:page:code;" id="JS_&mvt:page:code;">
+<div id="site-container">
+	<mvt:item name="hdft" param="global_header" file="global-header-item.htm" />
+	<mvt:item name="navbar" file="cssui-navbar-item.htm" />
+	<div class="items">
+		<div class="page-head">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2><i class="icon-shopping-cart"></i> &mvt:page:name;</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<mvt:item name="hdft" param="header" file="OSEL-header-item.htm" />
+					<form method="post" action="&mvt:global:secure_sessionurl;" role="form" class="form-horizontal clearfix" id="osel-form">
+						<mvt:item name="tax" />
+						<input type="hidden" name="Screen" value="OPAY" />
+						<input type="hidden" name="Action" value="SHIP,PSHP,CTAX" />
+						<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+						<mvt:if expr="l.settings:messages:error_message_count">
+							<div class="alert alert-danger">
+								<mvt:foreach iterator="error" array="messages:error_messages">
+									&mvt:error;
+								</mvt:foreach>
+							</div>
+						</mvt:if>
+						<mvt:if expr="l.settings:messages:information_message_count">
+							<div class="alert alert-info">
+								<mvt:foreach iterator="message" array="messages:information_messages">
+									&mvt:message;
+								</mvt:foreach>
+							</div>
+						</mvt:if>
+						<div id="shipping-payment" class="clearfix">
+							<div class="col-md-6">
+								<label for="ShippingMethod" class="control-label">Ship Via:</label>
+								<select name="ShippingMethod" id="ShippingMethod" class="form-control">
+									<mvt:if expr="ISNULL l.settings:shippingmethods">
+										<mvt:if expr="ISNULL l.settings:fallbackshippingmethod">
+											<option value="">Unable to Calculate Shipping Costs</option>
+											<mvt:else>
+											<option value="">&mvt:fallbackshippingmethod:name; (&mvt:fallbackshippingmethod:formatted_price;)</option>
+										</mvt:if>
+										<mvt:else>
+										<mvt:foreach array="shippingmethods" iterator="method">
+											<mvt:if expr="NOT ISNULL l.settings:method:price">
+												<option value="&mvte:method:module;:&mvte:method:code;">&mvt:method:name; (&mvt:method:formatted_price;)</option>
+												<mvt:else>
+												<option value="&mvte:method:module;:&mvte:method:code;">&mvt:method:name;</option>
+											</mvt:if>
+										</mvt:foreach>
+									</mvt:if>
+								</select>
+								<mvt:if expr="ISNULL l.settings:shippingmethods">
+									<br />
+									<strong>No valid shipping methods are available for your order. You will be contacted regarding shipping when your order is processed.</strong>
+								</mvt:if>
+							</div>
+							<div class="col-md-6">
+								<label for="PaymentMethod" class="control-label">Pay With:</label>
+								<select name="PaymentMethod" id="PaymentMethod" class="form-control">
+									<mvt:foreach array="paymentmethods" iterator="method">
+										<option value="&mvte:method:module;:&mvte:method:code;">&mvt:method:name;</option>
+									</mvt:foreach>
+								</select>
+							</div>
+						</div>
+						<br />
+						<div class="text-right col-md-12">
+							<mvt:item name="buttons" param="Continue" file="cssui-buttonContinue-item.htm" />
+						</div>
+						<div id="customer-fields" class="non-editable clearfix">
+							<mvt:item name="customer" file="OSEL-custflds-item.htm" />
+						</div>
+						<div id="basket-contents" class="non-editable cart table-responsive clearfix">
+							<mvt:item name="basket" file="OSEL-basket-item.htm" />
+						</div>
+					</form>
+					<mvt:item name="hdft" param="footer" file="OSEL-footer-item.htm" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<mvt:item name="hdft" param="global_footer" file="global-footer-item.htm" />
+</div>
+</body>
+</html>

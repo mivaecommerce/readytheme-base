@@ -1,0 +1,102 @@
+<div id="ship-to" class="col-md-6">
+	<h3 class="title">Ship To:</h3>
+	<mvt:if expr="l.settings:order:ship_fname OR l.settings:order:ship_lname">
+		<div class="form-group clearfix">
+			<label class="col-lg-3 control-label">Name:</label>
+			<div class="col-lg-9 form-control-static">&mvte:order:ship_fname; &mvte:order:ship_lname;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="l.settings:order:ship_email">
+		<div class="form-group clearfix">
+			<label class="col-lg-3 control-label">Email Address:</label>
+			<div class="col-lg-9 form-control-static">&mvte:order:ship_email;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="l.settings:order:ship_phone">
+		<div class="form-group clearfix">
+			<label class="col-lg-3 control-label">Phone Number:</label>
+			<div class="col-lg-9 form-control-static">&mvte:order:ship_phone;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="l.settings:order:ship_fax">
+		<div class="form-group clearfix">
+			<label class="col-lg-3 control-label">Fax Number:</label>
+			<div class="col-lg-9 form-control-static">&mvte:order:ship_fax;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="l.settings:order:ship_comp">
+		<div class="form-group clearfix">
+			<label class="col-lg-3 control-label">Company:</label>
+			<div class="col-lg-9 form-control-static">&mvte:order:ship_comp;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="l.settings:order:ship_addr1 OR l.settings:order:ship_addr2 OR l.settings:order:ship_city OR l.settings:order:ship_state OR l.settings:order:ship_zip OR l.settings:order:ship_cntry">
+		<div class="form-group clearfix">
+			<label class="col-lg-3 control-label">Address:</label>
+			<div class="col-lg-9 form-control-static">
+				&mvte:order:ship_addr1;<br />
+				<mvt:if expr="l.settings:order:ship_addr2">
+					&mvte:order:ship_addr2;<br />
+				</mvt:if>
+				<mvt:if expr="( NOT ISNULL l.settings:order:ship_city ) AND ( NOT ISNULL l.settings:order:ship_state )">
+					&mvte:order:ship_city;,
+				<mvt:else>
+					&mvte:order:ship_city;
+				</mvt:if>
+				&mvte:order:ship_state; &mvte:order:ship_zip;<br />
+				&mvte:order:ship_cntry;
+			</div>
+		</div>
+	</mvt:if>
+</div>
+<div id="bill-to" class="col-md-6">
+	<h3 class="title">Bill To:</h3>
+	<mvt:if expr="l.settings:order:bill_fname OR l.settings:order:bill_lname">
+		<div class="form-group clearfix">
+			<label class="col-lg-3 control-label">Name:</label>
+			<div class="col-lg-9 form-control-static">&mvte:order:bill_fname; &mvte:order:bill_lname;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="l.settings:order:bill_email">
+		<div class="form-group clearfix">
+			<label class="col-lg-3 control-label">Email Address:</label>
+			<div class="col-lg-9 form-control-static">&mvte:order:bill_email;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="l.settings:order:bill_phone">
+		<div class="form-group clearfix">
+			<label class="col-lg-3 control-label">Phone Number:</label>
+			<div class="col-lg-9 form-control-static">&mvte:order:bill_phone;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="l.settings:order:bill_fax">
+		<div class="form-group clearfix">
+			<label class="col-lg-3 control-label">Fax Number:</label>
+			<div class="col-lg-9 form-control-static">&mvte:order:bill_fax;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="l.settings:order:bill_comp">
+		<div class="form-group clearfix">
+			<label class="col-lg-3 control-label">Company:</label>
+			<div class="col-lg-9 form-control-static">&mvte:order:bill_comp;</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="l.settings:order:bill_addr1 OR l.settings:order:bill_addr2 OR l.settings:order:bill_city OR l.settings:order:bill_state OR l.settings:order:bill_zip OR l.settings:order:bill_cntry">
+		<div class="form-group clearfix">
+			<label class="col-lg-3 control-label">Address:</label>
+			<div class="col-lg-9 form-control-static">
+				&mvte:order:bill_addr1;<br />
+				<mvt:if expr="l.settings:order:bill_addr2">
+					&mvte:order:bill_addr2;<br />
+				</mvt:if>
+				<mvt:if expr="( NOT ISNULL l.settings:order:bill_city ) AND ( NOT ISNULL l.settings:order:bill_state )">
+					&mvte:order:bill_city;,
+				<mvt:else>
+					&mvte:order:bill_city;
+				</mvt:if>
+				&mvte:order:bill_state; &mvte:order:bill_zip;<br />
+				&mvte:order:bill_cntry;
+			</div>
+		</div>
+	</mvt:if>
+</div>

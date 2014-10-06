@@ -1,0 +1,223 @@
+@charset "utf-8";
+
+
+
+/* Default Color */
+
+
+
+a,
+
+a:visited {
+
+	color: #2b2e2e;
+
+}
+
+a:hover {
+
+	color: #4e5555;
+
+}
+
+.color {
+
+	color: #333333;
+
+}
+
+.button a,
+
+.button a:visited {
+
+	background: #4e5555;
+
+}
+
+.button a:hover {
+
+	background: #383d3d;
+
+}
+
+.btn-primary {
+
+	background-color: #d8d8d8;
+
+	border-color: #cfcfcf;
+
+}
+
+.btn-primary:hover,
+
+.btn-primary:focus,
+
+.btn-primary:active,
+
+.btn-primary.active,
+
+.open .dropdown-toggle.btn-primary {
+
+	background-color: #383d3d;
+
+	border-color: #2b2e2e;
+
+	color: #fff;
+
+}
+
+
+
+/* Header */
+
+header .hlinks > span {
+
+	background: #4e5555;
+
+	border: 1px solid #2b2e2e;
+
+}
+
+
+
+/* Navigation */
+
+.navbar {
+
+	background: #4e5555;
+
+	border-top: 1px solid #2b2e2e;
+
+	border-bottom: 1px solid #2b2e2e;
+
+}
+
+	.navbar button {
+
+		background: transparent;
+
+	}
+
+	.navbar button:hover {
+
+		background: transparent;
+
+	}
+
+		.navbar .nav {
+
+			border-left: 1px solid #2b2e2e;
+
+		}
+
+			.navbar .nav li {
+				border-right: 1px solid #2b2e2e;
+				-webkit-transition: background 1s ease;
+				-moz-transition: background 1s ease;
+				-o-transition: background 1s ease;
+				transition: background 1s ease;
+			}
+
+			.navbar .nav li:hover {
+				background-color:#2b2e2e;
+			}
+
+			.navbar .nav > li > a:hover {
+
+				background: transparent; !important;
+
+			}
+
+
+			.navbar .nav .active > a,
+
+			.navbar .nav .active > a:hover,
+
+			.navbar .nav .active > a:focus {
+
+				background: #2b2e2e !important;
+
+			}
+
+			.dropdown-toggle {
+
+				background: #4e5555 !important;
+
+			}
+
+			.nav-collapse .nav > li > a {
+
+				background: #4e5555 !important;
+
+			}
+
+			.nav .open > a,
+
+			.nav .open > a:hover,
+
+			.nav .open > a:focus {
+
+				border-color: #2b2e2e;
+
+			}
+
+			
+
+/* Sidebar nav */
+
+.category-tree > li > a {
+
+	border-left: 3px solid #4e5555;
+
+}
+
+
+
+/* Title */
+
+.title i {
+
+	color: #4e5555;
+
+}
+
+
+
+/* Tabs */
+
+.nav-tabs > li > a:hover {
+
+	background: #4e5555;
+
+	color: #fff;
+
+}
+
+
+
+/* Back to top */
+
+.totop a,
+
+.totop a:visited {
+
+	background: #4e5555;
+
+}
+
+.totop a:hover {
+
+	background: #2b2e2e;
+
+}
+
+
+
+/* Footer */
+
+footer {
+
+	
+
+}
+

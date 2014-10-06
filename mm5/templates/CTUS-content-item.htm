@@ -1,0 +1,40 @@
+<div class="col-md-7">
+	<p><strong>We're Here To Help</strong><br />Your satisfaction is important to us! Use the form below to email us your questions about products, online orders, store experiences and more.</p>
+	<p><strong>Order Questions:</strong><br />If you need help or have any other questions concerning your orders, please <a href="mailto:&mvte:global:store:email;" title="Email Us">email us</a> or call: <a href="tel:&mvt:global:store:phone;">&mvt:global:store:phone;</a>.</p>
+</div>
+<div class="col-md-3">
+	<p><strong>Our Address:</strong><br />
+	 &mvt:global:store:company;<br /> 
+	&mvt:global:store:address; <br /> 
+	&mvt:global:store:city;, &mvt:global:store:state; &mvt:global:store:zip; &mvt:global:store:country;<br /> 
+	Phone: <a href="tel:&mvt:global:store:phone;">&mvt:global:store:phone;</a><br /> 
+	<mvt:if expr="g.store:fax">Fax: &mvt:global:store:fax;</mvt:if>
+	</p>
+</div>	
+<div class="clearfix"></div>
+<br />
+<p id="noscript-warning" class="red"><strong>You must javascript enabled to use this form.</strong></p>
+<form method="post" action="forms/contactForm.php" name="contact-form" id="contact-form" class="hidden col-md-12" role="form">
+		<div class="hidden error-message">
+			<ul></ul>
+		</div>
+		<div class="col-md-6 form-row">
+			<label for="contactName" title="Your Name" class="control-label required">Your Name:</label>
+			<input type="text" name="contactName" id="contactName" title="Your Name" value="" class="form-control" />
+		</div>
+		<div class="col-md-6 form-row">
+			<label for="contactEmail" title="Your Email Address" class="control-label required">Your Email Address:</label>
+			<input type="text" name="contactEmail" id="contactEmail" title="Your Email Address" value="" class="form-control" />
+		</div>
+		<div class="col-md-12 form-row">
+			<label for="contactComment" title="Comments or Questions" class="control-label required">Comments or Questions:</label>
+			<textarea name="contactComment" id="contactComment" title="Comments or Questions" rows="5" cols="40" class="form-control"></textarea>
+		</div>
+		<br class="clearfix" />
+		<div class="col-md-12 form-row text-right">
+			<input type="reset" value="Reset" title="Reset the Form and Start Over" class="btn btn-default" />
+			<input type="submit" value="Submit" title="Send Us Your Information" class="btn btn-primary" />
+		</div>
+	<input type="hidden" name="storeName" value="&mvte:store:name;" />
+	<input type="hidden" name="storeEmail" value="&mvt:store:email;" />
+</form>
