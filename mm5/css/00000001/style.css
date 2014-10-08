@@ -624,6 +624,7 @@ header {
 	background: #f8f8f8;
 	border-bottom: 1px solid #ddd;
 	padding:10px 0; 
+	margin-bottom: 15px;
 }
 /* Content */
 .content h1 {
@@ -1549,6 +1550,10 @@ padding: 0px;
 	max-height: none;
 }
 
+.img-responsive {
+	width: 100% !important;
+}
+
 #opay_form #js-cc_exp {
 	color: transparent;
 }
@@ -1566,4 +1571,41 @@ padding: 0px;
 .featured-products h3{
 
 	padding: 10px 30px;
+}
+
+/*	FPWD   */
+.FPWD label.control-label {
+	text-align: left;
+}
+
+
+/*	CTUS   */
+.CTUS .col-md-6 {
+	z-index: 100;
+}
+
+/*	OUS1   */
+.OUS1 .product-image img {
+	width: 350px;
+}
+
+/*	ORDH   
+@media screen and (max-width: 500px) {
+	.ORDH table {
+		max-width: 332px;
+	}
+	.ORDH table td {
+		max-width: 54px;
+	}
+}
+*/
+
+
+/* ---------------- Discounts --------------- */
+
+.item-discount{
+
+	font-size: 11px;
+	font-style: italic;
+
 }

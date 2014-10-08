@@ -115,7 +115,9 @@
 				</div>
 				<div class="product-name"><a href="&mvte:product:link;">&mvt:product:name;</a></div>
 				<div class="product-code">Code: <span class="bold">&mvt:product:code;</span></div>
-				<div class="product-price">Price: <span class="bold">&mvt:product:formatted_price;</span></div>
+				<div class="product-price">
+					Price: <span class="bold">&mvt:product:formatted_base_price;</span>
+				</div>
 				<mvt:if expr="l.settings:product:inv_active">&mvt:product:inv_long;<br></mvt:if>
 				<div class="product-quantity">Quantity in Basket:
 					<mvt:if expr="l.settings:product:quantity EQ 0">

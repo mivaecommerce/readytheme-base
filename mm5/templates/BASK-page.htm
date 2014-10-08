@@ -23,6 +23,20 @@
 			<div class="row">
 				<div class="col-md-12">
 					<mvt:item name="hdft" param="header" file="BASK-header-item.htm" />
+					<mvt:if expr="l.settings:messages:error_message_count">
+						<div class="alert alert-danger">
+							<mvt:foreach iterator="error" array="messages:error_messages">
+								&mvt:error;
+							</mvt:foreach>
+						</div>
+					</mvt:if>
+					<mvt:if expr="l.settings:messages:information_message_count">
+						<div class="alert alert-info">
+							<mvt:foreach iterator="message" array="messages:information_messages">
+								&mvt:message;
+							</mvt:foreach>
+						</div>
+					</mvt:if>
 					<div id="basket-contents" class="editable cart">
 						<mvt:item name="basket" file="BASK-basket-item.htm" />
 					</div>

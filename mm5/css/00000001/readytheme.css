@@ -126,13 +126,46 @@
 				color: #7fdbff;
 			}
 
-/* --------------------------- Top Nav Styles ------------------------------- */
-
-/* ------------------------ first sub-level ------------------------ */
-	.nav li ul {
+/* ----  These are the modifications needed for the base Bootstrap Framework. ---- */
+	/* ------------------------ first sub-level ------------------------ */
+	.navbar .nav li ul {
 		display: none;
-		font-size: 14px;
-		line-height: 1.5;
+		line-height: 3;
+	}
+		.navbar .nav li ul a {
+			color: #fff;
+			display: block;
+			padding: 0 14px;
+		}
+		.navbar .nav li ul a:hover {
+			text-decoration: none;
+		}
+	.navbar .nav li:hover ul {
+		display: block;
+	}
+		.navbar .nav li ul li {
+			border: 0 none;
+			display: block;
+			position: relative;
+		}
+
+		/* ------------------------ second and subsequent sub-levels ------------------------ */
+		.navbar .nav li:hover ul ul {
+			display: none;
+		}
+			.navbar .nav li ul li ul {
+				display: none;
+			}
+			.navbar .nav li ul li:hover > ul {
+				display: block;
+			}
+			
+@media screen and (min-width: 768px) {
+	/* ------------------------ first sub-level ------------------------ */
+	.navbar .nav li ul {
+		display: none;
+		font-size: 12px;
+		line-height: 3;
 		margin: 0;
 		min-width: 100%;
 		padding: 0;
@@ -140,22 +173,89 @@
 		left: 0;
 		z-index: 999;
 	}
-
-	
-
-	.nav li a{
-
-		color: #fff !important;
-		padding: 14px 15px 14px;
-		text-shadow: none !important;
-		text-decoration: none;
-	}
-
-	.nav li:hover ul {
+		.navbar .nav li ul a {
+			color: #fff;
+			display: block;
+			padding: 0 14px;
+		}
+		.navbar .nav li ul a:hover {
+			text-decoration: none;
+		}
+	.navbar .nav li:hover ul {
 		background: #ccc;
+		border: 1px solid #2b2e2e;
 		display: block;
 	}
-		.nav li ul li {
+		.navbar .nav li ul li {
+			border: 0 none;
 			display: block;
 			position: relative;
 		}
+
+		/* ------------------------ second and subsequent sub-levels ------------------------ */
+		.navbar .nav li:hover ul ul {
+			display: none;
+		}
+			.navbar .nav li ul li ul {
+				display: none;
+				position: absolute;
+				top: -1px;
+				left: 100%;
+			}
+			.navbar .nav li ul li:hover > ul {
+				display: block;
+			}
+
+	/* ------------------------ horizontal-mega-menu ------------------------ */
+	.navbar .nav.horizontal-mega-menu li ul li {
+		display: inline-block;
+		height: auto;
+		vertical-align: top;
+	}
+		.navbar .nav.horizontal-mega-menu li ul li ul {
+			display: block;
+			position: relative;
+			top: auto;
+			left: auto;
+		}
+			.navbar .nav.horizontal-mega-menu li ul li ul li {
+				display: block;
+			}
+
+	/* ------------------------ vertical-fly-out ------------------------ */
+	.vertical-fly-out li {
+		display: block;
+	}
+		.vertical-fly-out li ul {
+			top: 0;
+			left: 100%;
+		}
+
+	/* ------------------------ single-navigation-column ------------------------ */
+	.single-navigation-column {
+		display: inline-block;
+		padding-right: 32px;
+		vertical-align: top;
+	}
+		.single-navigation-column li {
+			display: block;
+			font-size: 14px;
+			height: auto;
+			line-height: 1.75;
+		}
+			.single-navigation-column .single-navigation-title {
+				font-size: 16px;
+				font-weight: 700;
+				height: 2em;
+				line-height: 2;
+				margin-bottom: 4px;
+				text-transform: uppercase;
+			}
+			.single-navigation-column li a {
+				padding: 0;
+			}
+			.single-navigation-column li:hover > a {
+				background: transparent;
+				color: #7fdbff;
+			}
+}

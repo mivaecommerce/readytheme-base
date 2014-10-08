@@ -1,4 +1,4 @@
-/*** $Id: cssui.css 39650 2013-10-24 18:51:16Z rguisewite $ ***/
+/*** $Id: cssui.css 45943 2014-08-19 21:52:42Z burch $ ***/
 /*** Site ***/
 
 body{
@@ -8,6 +8,8 @@ body{
 	font-size:12px;
 	color:#000000;
 	text-align:center;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
 }
 
 td{ font-size:1em; }
@@ -123,6 +125,8 @@ select{
 	padding:1px 2px;
 	margin:0;
 	cursor:pointer;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
 }
 
 #site-container{
@@ -743,8 +747,18 @@ div.invalid label{ color:#dd0000; }
 
 #basket-contents .basket-qty-input{ width:34px; }
 
+#basket-contents .item-image{
+	vertical-align:middle;
+}
+
 #basket-contents .item-remove{
 	width:8%;
+	vertical-align:middle;
+}
+
+#basket-contents .item-remove-link{
+	margin:auto;
+	margin-top:.5em;
 	vertical-align:middle;
 }
 
@@ -784,6 +798,12 @@ div.invalid label{ color:#dd0000; }
 
 #basket-contents .custom-field{
 	font-size:x-small;
+}
+
+#basket-contents .item-discount{
+	white-space:nowrap;
+	font-size:x-small;
+	font-style:italic;
 }
 
 #basket-contents .basket-charges .charge-description,
@@ -914,6 +934,12 @@ div.invalid label{ color:#dd0000; }
 
 .product-descrip{
 	margin:6px 0 0 0;
+}
+
+.product-discount{
+	white-space:nowrap;
+	font-size:x-small;
+	font-style:italic;
 }
 
 .PROD .purchase-buttons{
@@ -1384,6 +1410,7 @@ div.invalid label{ color:#dd0000; }
 }
 
 #order-contents table tr td.order-reorder		{ text-align:center; }
+#order-contents table tr td.order-image			{ vertical-align:middle; }
 #order-contents table tr td.order-invoice		{  }
 #order-contents table tr td.order-description	{ text-align:left; }
 #order-contents table tr td.order-date			{ text-align:left }
@@ -1393,6 +1420,16 @@ div.invalid label{ color:#dd0000; }
 #order-contents table tr td.order-tracking		{ text-align:left; }
 #order-contents table tr td.order-total			{ text-align:right; }
 #order-contents table tr td.order-price			{ text-align:right; }
+
+#order-contents .custom-field{
+	font-size:x-small;
+}
+
+#order-contents .order-discount{
+	white-space:nowrap;
+	font-size:x-small;
+	font-style:italic;
+}
 
 #order-contents table tr td.charge-description,
 #order-contents table tr td.charge-fee{
