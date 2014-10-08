@@ -20,7 +20,7 @@ $now=time();
 
 /* Does the token match the timestamp when run through the md5() function? If not, we know something is up and exit. */
 if(!$proceed){ 
-	echo "Form processing halted for suspicious activity";
+	echo "Invalid Token.";
 	exit;
 }
 
@@ -32,7 +32,7 @@ if(((int)$_POST['mms'] + $seconds) < mktime()){
 
 /* If e-mail is not valid show error message. This is a fail-safe measure in case the script is hit directly by a bot. */
 if (!preg_match('/^[_A-z0-9-]+((\.|\+)[_A-z0-9-]+)*@[A-z0-9-]+(\.[A-z0-9-]+)*(\.[A-z]{2,4})$/', $contactEmail)){
-	echo "ERRORS!!!!! Are You A Bot?!?!?!?!?!";
+	echo "Missing or Invalid Email Address Format";
 	exit();
 }
 
@@ -69,6 +69,3 @@ if(mail){
 	exit();
 }
 ?>
-
-<!-- Just a nice gag in case someone can actually visit this page. -->
-<p>If you want to "attack" this form, <a href="clearCookie.php">try this demo</a>.</p>
