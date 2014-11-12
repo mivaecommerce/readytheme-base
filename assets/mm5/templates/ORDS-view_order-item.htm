@@ -1,0 +1,86 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12"> 
+			<h3 class="title">Items in your order</h3>
+			<table class="table table-striped tcart">
+				<thead>
+					<tr>
+						<th>&nbsp;</th>
+						<th>Product Details</th>
+						<th>Status</th>
+						<th>Quantity</th>
+						<th>Unit Price</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody>
+					<mvt:foreach iterator="item" array="order:items">
+						<tr>
+							<td>
+								<mvt:if expr="l.settings:item:reorder EQ 1">
+									<a href="&mvt:global:sessionurl;&amp;Store_Code=&mvta:store:code;&amp;Screen=PROD&amp;Product_Code=&mvta:item:code;" class="btn btn-default"><i class="icon-repeat"></i></a>
+								<mvt:else>
+									&nbsp;
+								</mvt:if>
+							</td>
+							<td>
+								&mvt:item:name;
+								<mvt:if expr="l.settings:item:upsold">
+									&nbsp;(Special Offer)
+								</mvt:if>
+								<mvt:foreach iterator="option" array="item:options">
+									<br />
+									<mvt:if expr="l.settings:option:option_id">
+										&mvt:option:attr_code;: &mvt:option:opt_code;
+									<mvt:elseif expr="NOT ISNULL l.settings:option:data">
+										&mvt:option:attr_code;: &mvt:option:data;
+									<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
+										&mvt:option:attr_code;: &mvt:option:data_long;
+									<mvt:else>
+										&mvt:option:attr_code;
+									</mvt:if>
+								</mvt:foreach>
+							</td>
+							<td class="item-input">&mvt:item:order_status;</td>
+							<td>&mvt:item:quantity;</td>
+							<td>
+								&mvt:item:formatted_price;
+								<mvt:foreach iterator="option" array="item:options">
+									<br />
+									<mvt:if expr="l.settings:option:price">
+										&mvt:option:formatted_price;
+									<mvt:else>
+										&nbsp;
+									</mvt:if>
+								</mvt:foreach>
+							</td>
+							<td>
+								&mvt:item:formatted_subtotal;
+								<mvt:foreach iterator="option" array="item:options">
+									<br />
+									<mvt:if expr="l.settings:option:price">
+										&mvt:option:formatted_subtotal;
+									<mvt:else>
+										&nbsp;
+									</mvt:if>
+								</mvt:foreach>
+							</td>
+						</tr>
+					</mvt:foreach>
+					<mvt:foreach iterator="charge" array="order:charges">
+						<tr class="basket-charges">
+							<td colspan="4">&nbsp;</td>
+							<td class="charge-description">&mvt:charge:descrip;:</td>
+							<td class="formatted-charge">&mvt:charge:formatted_disp_amt;</td>
+						</tr>
+					</mvt:foreach>
+					<tr id="basket-totals">
+						<td colspan="4">&nbsp;</td>
+						<td class="total-prompt">Total:</td>
+						<td class="formatted-total">&mvt:order:formatted_total;</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

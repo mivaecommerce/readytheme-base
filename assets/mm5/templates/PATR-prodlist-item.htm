@@ -1,0 +1,217 @@
+<div class="expanded"><div id="filter-items-container"><mvt:if expr="l.settings:related_products:products_on_page_count GT 1">
+		<div class="sorting">
+		<form method="get" action="&mvte:global:sessionurl;">
+			<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
+			<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+			<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;" />
+			<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;" />
+			<input type="hidden" name="Search" value="&mvte:global:Search;" /> 
+			<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
+			<label for="Sort_By">Sort By:</label>
+			<select name="Sort_By" id="Sort_By" onchange="this.form.submit();">
+				<mvt:if expr="ISNULL g.Sort_By">
+					<option value="disp_order" selected="selected">Default</option>
+				<mvt:else>
+					<option value="disp_order">Default</option>
+				</mvt:if>
+				<mvt:if expr="g.Sort_By EQ 'bestsellers'">
+					<option value="bestsellers" selected="selected">Best Selling</option>
+				<mvt:else>
+					<option value="bestsellers">Best Selling</option>
+				</mvt:if>
+				<mvt:if expr="g.Sort_By EQ 'price_asc'">
+					<option value="price_asc" selected="selected">Lowest Price</option>
+				<mvt:else>
+					<option value="price_asc">Lowest Price</option>
+				</mvt:if>
+				<mvt:if expr="g.Sort_By EQ 'price_desc'">
+					<option value="price_desc" selected="selected">Highest Price</option>
+				<mvt:else>
+					<option value="price_desc">Highest Price</option>
+				</mvt:if>
+				<mvt:if expr="g.Sort_By EQ 'newest'">
+					<option value="newest" selected="selected">Newest Items</option>
+				<mvt:else>
+					<option value="newest">Newest Items</option>
+				</mvt:if>
+			</select>
+			<noscript><input type="submit" value="go"></noscript>
+		</form>
+		</div></mvt:if><mvt:if expr="l.settings:related_products:products_on_page_count GT 1">
+		<div class="per-page">
+		<form method="get" action="&mvte:global:sessionurl;">
+			<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
+			<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+			<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;" />
+			<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;" />
+			<input type="hidden" name="Search" value="&mvte:global:Search;" /> 
+			<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
+			<label for="Per_Page">View:</label>
+			<select name="Per_Page" id="Per_Page" onchange="this.form.submit();">
+				<mvt:if expr="g.Per_Page EQ 10">
+					<option value="10" selected="selected">10</option>
+				<mvt:else>
+					<option value="10">10</option>
+				</mvt:if>
+				<mvt:if expr="g.Per_Page EQ 20">
+					<option value="20" selected="selected">20</option>
+				<mvt:else>
+					<option value="20">20</option>
+				</mvt:if>
+				<mvt:if expr="g.Per_Page EQ 40">
+					<option value="40" selected="selected">40</option>
+				<mvt:else>
+					<option value="40">40</option>
+				</mvt:if>
+				<mvt:if expr="g.Per_Page EQ -1">
+					<option value="-1" selected="selected">All</option>
+				<mvt:else>
+					<option value="-1">All</option>
+				</mvt:if>
+			</select>
+			<noscript><input type="submit" value="go"></noscript>
+		</form>
+		</div></mvt:if>
+	<mvt:if expr="l.settings:related_products:page_links:last_page GT 1">
+		<div class="page-links">
+			<span class="page-links-title">Page(s):</span>
+			<span class="page-links-container">
+				<mvt:if expr="l.settings:related_products:page_links:current_page NE 1">
+					<a href="&mvte:related_products:page_links:prev_link;" class="page-links-previous">&lt;</a>
+				<mvt:else>
+					<span class="page-links-previous page-links-deactivated">&lt;</span>
+				</mvt:if>
+				<mvt:if expr="l.settings:related_products:page_links:current_page NE l.settings:related_products:page_links:last_page">
+					<a href="&mvte:related_products:page_links:next_link;" class="page-links-next">&gt;</a>
+				<mvt:else>
+					<span class="page-links-next page-links-deactivated">&gt;</span>
+				</mvt:if>
+				<span class="page-disp">
+					<mvt:if expr="NOT l.settings:related_products:page_links:contains_first">
+						<a href="&mvte:related_products:page_links:first_link;" class="page-links-inactive">1</a>...
+					</mvt:if>
+					<mvt:foreach iterator="pages" array="related_products:page_links:pages">
+						<mvt:if expr="l.settings:related_products:page_links:current_page EQ l.settings:pages:page_num">
+							<span class="page-links-active">&mvte:pages:page_num;</span>
+						<mvt:else>
+							<a href="&mvte:pages:link;" class="page-links-inactive">&mvte:pages:page_num;</a>
+						</mvt:if>
+					</mvt:foreach>
+					<mvt:if expr="NOT l.settings:related_products:page_links:contains_last">
+						...<a href="&mvte:related_products:page_links:last_link;" class="page-links-inactive">&mvte:related_products:page_links:last_page;</a>
+					</mvt:if>
+				</span>
+			</span>
+		</div>
+		
+	</mvt:if>
+	</div><div class="clear"></div>
+	<mvt:foreach iterator="product" array="related_products:products">
+	<div class="product-item" style="width:50%">
+		<div class="padding">
+			<div class="product-details">
+				<div class="product-thumbnail">
+					<mvt:if expr="NOT ISNULL l.settings:product:thumbnail"><a href="&mvte:product:link;"><img src="&mvte:product:thumbnail;" alt="&mvte:product:name;" /><mvt:else><a class="thumbnail-not-available" href="&mvte:product:link;" title="&mvte:product:name;"></mvt:if></a>
+				</div>
+				<div class="product-name"><a href="&mvte:product:link;">&mvt:product:name;</a></div>
+				<div class="product-code">Code: <span class="bold">&mvt:product:code;</span></div>
+				<div class="product-price">
+					Price: <span class="bold">&mvt:product:formatted_base_price;</span>
+				</div>
+				<mvt:if expr="l.settings:product:inv_active">&mvt:product:inv_long;<br></mvt:if>
+				<div class="product-quantity">Quantity in Basket:
+					<mvt:if expr="l.settings:product:quantity EQ 0">
+					<span class="italic">none</span>
+					<mvt:else>
+					<span class="italic">&mvt:product:quantity;</span>
+					</mvt:if>
+				</div>
+			</div>
+			<mvt:if expr="l.settings:product:inv_level NE 'out'">
+			<div class="purchase-buttons">
+				<form method="post" action="&mvte:global:sessionurl;Screen=BASK">
+				<input type="hidden" name="Old_Screen" value="&mvte:global:Screen;" />
+				<input type="hidden" name="Old_Search" value="&mvte:global:Search;" />
+				<input type="hidden" name="Action" value="ADPR" />
+				<input type="hidden" name="Quantity" value="1" />
+				<input type="hidden" name="Attributes" value="Yes" />
+				<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+				<input type="hidden" name="Product_Code" value="&mvte:product:code;" />
+				<input type="hidden" name="Current_Product_Code" value="&mvte:global:Product_Code;" />
+				<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;" />
+				<input type="hidden" name="Offset" value="&mvte:global:RelatedOffset;" />
+				<input type="hidden" name="AllOffset" value="&mvte:global:AllOffset;" />
+				<input type="hidden" name="CatListingOffset" value="&mvte:global:CatListingOffset;" />
+				<input type="hidden" name="RelatedOffset" value="&mvte:global:RelatedOffset;" />
+				<input type="hidden" name="SearchOffset" value="&mvte:global:SearchOffset;" />
+				<mvt:item name="buttons" param="AddToBasketE" file="cssui-buttonAddToBasketE-item.htm" />
+				</form>
+				<form method="post" action="&mvte:global:secure_sessionurl;Screen=OINF">
+				<input type="hidden" name="Old_Screen" value="&mvte:global:Screen;" />
+				<input type="hidden" name="Old_Search" value="&mvte:global:Search;" />
+				<input type="hidden" name="Action" value="ADPR" />
+				<input type="hidden" name="Quantity" value="1" />
+				<input type="hidden" name="Attributes" value="Yes" />
+				<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+				<input type="hidden" name="Product_Code" value="&mvte:product:code;" />
+				<input type="hidden" name="Current_Product_Code" value="&mvte:global:Product_Code;" />
+				<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;" />
+				<input type="hidden" name="Offset" value="&mvte:global:RelatedOffset;" />
+				<input type="hidden" name="AllOffset" value="&mvte:global:AllOffset;" />
+				<input type="hidden" name="CatListingOffset" value="&mvte:global:CatListingOffset;" />
+				<input type="hidden" name="RelatedOffset" value="&mvte:global:RelatedOffset;" />
+				<input type="hidden" name="SearchOffset" value="&mvte:global:SearchOffset;" />
+				<mvt:item name="buttons" param="BuyNowE" file="cssui-buttonBuyNowE-item.htm" />
+				</form>
+			</div>
+			</mvt:if>
+		</div>
+	</div>
+	</mvt:foreach>
+	<div class="clear"></div>
+	<mvt:if expr="NOT l.settings:related_products:page_disp_count GT 0">
+		<mvt:if expr="g.RelatedOffset OR g.RelatedNextOffset">
+		<div class="next-previous">
+			<mvt:if expr="g.RelatedOffset GT 0">
+			<div class="previous-button">
+				<form method="post" action="&mvte:global:sessionurl;">
+				<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
+				<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+				<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;" />
+				<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;" />
+				<input type="hidden" name="Search" value="&mvte:global:Search;" />
+				<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
+				<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
+				<input type="hidden" name="Offset" value = "&mvte:global:RelatedPrevOffset;" />
+			<input type="hidden" name="AllOffset" value = "&mvte:global:AllOffset;" />
+			<input type="hidden" name="CatListingOffset" value = "&mvte:global:CatListingOffset;" />
+			<input type="hidden" name="RelatedOffset" value = "&mvte:global:RelatedPrevOffset;" />
+			<input type="hidden" name="SearchOffset" value = "&mvte:global:SearchOffset;" />
+				<mvt:item name="buttons" param="Previous" file="cssui-buttonPrevious-item.htm" />
+				</form>
+			</div>
+			</mvt:if>
+		
+			<mvt:if expr="g.RelatedNextOffset GT 0">
+			<div class="next-button">
+				<form method="post" action="&mvte:global:sessionurl;">
+				<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
+				<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+				<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;" />
+				<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;" />
+				<input type="hidden" name="Search" value="&mvte:global:Search;" />
+				<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
+				<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
+				<input type="hidden" name="Offset" value = "&mvte:global:RelatedNextOffset;" />
+			<input type="hidden" name="AllOffset" value = "&mvte:global:AllOffset;" />
+			<input type="hidden" name="CatListingOffset" value = "&mvte:global:CatListingOffset;" />
+			<input type="hidden" name="RelatedOffset" value = "&mvte:global:RelatedNextOffset;" />
+			<input type="hidden" name="SearchOffset" value = "&mvte:global:SearchOffset;" />
+				<mvt:item name="buttons" param="Next" file="cssui-buttonNext-item.htm" />
+				</form>
+			</div>
+			</mvt:if>
+		</div>
+		</mvt:if>
+	</mvt:if>
+</div>

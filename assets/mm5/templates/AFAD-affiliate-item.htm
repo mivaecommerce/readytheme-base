@@ -1,0 +1,95 @@
+<div id="fields-key">
+	<div><strong>Bold</strong> = Required</div>
+	<div><em>Italic</em> = Optional</div>
+	<mvt:if expr="g.Error_Message_Count">
+		<div><span class="red">Red</span> = Invalid</div>
+	</mvt:if>
+</div>
+<div class="col-md-6">
+	<h2>Login Information:</h2>
+	<div class="&mvte:global:Affiliate_Code_Row;">
+		<label for="Affiliate_Code" class="control-label required">Login:</label>
+		<input type="text" name="Affiliate_Code" id="Affiliate_Code" value="&mvte:global:Affiliate_Code;" class="form-control" autocomplete="off" />
+	</div>
+	<div class="&mvte:global:Affiliate_LostPass_Row;">
+		<label for="Affiliate_LostPass_Email" class="control-label required">Email Lost Passwords To:</label>
+		<input type="text" name="Affiliate_LostPass_Email" id="Affiliate_LostPass_Email" value="&mvte:global:Affiliate_LostPass_Email;" class="form-control" autocomplete="off" />
+	</div>
+	<div class="&mvte:global:Affiliate_Password_Row;">
+		<label for="Affiliate_Password" class="control-label required">Password:</label>
+		<input type="password" name="Affiliate_Password" id="Affiliate_Password" value="&mvte:global:Affiliate_Password;" class="form-control" autocomplete="off" />
+	</div>
+	<div class="&mvte:global:Affiliate_VerfiyPassword_Row;">
+		<label for="Affiliate_VerifyPassword" class="control-label required">Confirm Password:</label>
+		<input type="password" name="Affiliate_VerifyPassword" id="Affiliate_VerifyPassword" value="&mvte:global:Affiliate_VerifyPassword;" class="form-control" autocomplete="off" />
+	</div>
+	<h2 class="fields-heading">Affiliate Information:</h2>
+	<div class="&mvte:global:Affiliate_SiteName_Row;">
+		<label for="Affiliate_SiteName" class="control-label required">Site Name:</label>
+		<input type="text" name="Affiliate_SiteName" id="Affiliate_SiteName" value="&mvte:global:Affiliate_SiteName;" class="form-control" />
+	</div>
+	<div class="&mvte:global:Affiliate_SiteURL_Row;">
+		<label for="Affiliate_SiteURL" class="control-label required">Site URL:</label>
+		<input type="text" name="Affiliate_SiteURL" id="Affiliate_SiteURL" value="&mvte:global:Affiliate_SiteURL;" class="form-control" />
+	</div>
+</div>
+<div class="col-md-6">
+	<h2>Contact Information:</h2>
+	<div class="&mvte:global:Affiliate_ContactName_Row;">
+		<label for="Affiliate_ContactName" class="control-label required">Name:</label>
+		<input type="text" name="Affiliate_ContactName" id="Affiliate_SiteURL" value="&mvte:global:Affiliate_ContactName;" class="form-control" />
+	</div>
+	<div class="form_row">
+		<label for="Affiliate_Company" class="control-label italic">Company:</label>
+		<input type="text" name="Affiliate_Company" id="Affiliate_Company" value="&mvte:global:Affiliate_Company;" class="form-control" />
+	</div>
+	<div class="&mvte:global:Affiliate_Email_Row;">
+		<label for="Affiliate_Email" class="control-label required">Email:</label>
+		<input type="text" name="Affiliate_Email" id="Affiliate_Email" value="&mvte:global:Affiliate_Email;" class="form-control" />
+	</div>
+	<div class="&mvte:global:Affiliate_Phone_Row;">
+		<label for="Affiliate_Phone" class="control-label required">Phone:</label>
+		<input type="text" name="Affiliate_Phone" id="Affiliate_Phone" value="&mvte:global:Affiliate_Phone;" class="form-control" />
+	</div>
+	<div class="form_row">
+		<label for="Affiliate_Fax" class="control-label italic">Fax:</label>
+		<input type="text" name="Affiliate_Fax" id="Affiliate_Fax" value="&mvte:global:Affiliate_Fax;" class="form-control" />
+	</div>
+	<div class="&mvte:global:Affiliate_Address_Row;">
+		<label for="Affiliate_Address" class="control-label required">Address:</label>
+		<input type="text" name="Affiliate_Address" id="Affiliate_Address" value="&mvte:global:Affiliate_Address;" class="form-control" />
+	</div>
+	<div class="&mvte:global:Affiliate_City_Row;">
+		<label for="Affiliate_City" class="control-label required">City:</label>
+		<input type="text" name="Affiliate_City" id="Affiliate_City" value="&mvte:global:Affiliate_City;" class="form-control" />
+	</div>
+	<mvt:if expr="g.States_Empty">
+		<div class="&mvte:global:Affiliate_State_Row;">
+			<label for="Affiliate_State" class="control-label required">State/Province:</label>
+			<input type="text" name="Affiliate_State" id="Affiliate_State" value="&mvte:global:Affiliate_State;" class="form-control" />
+		</div>
+	<mvt:else>
+		<div class="&mvte:global:Affiliate_StateSelect_Row;">
+			<label for="Affiliate_StateSelect" class="control-label required">State/Province:</label>
+			<mvt:item name="states" param="Affiliate_StateSelect" />
+		</div>
+		<div class="&mvte:global:Affiliate_State_Row;">
+			<label for="Affiliate_State" class="control-label italic">Other State/Province:</label>
+			<input type="text" name="Affiliate_State" id="Affiliate_State" value="&mvte:global:Affiliate_State;" class="form-control" />
+		</div>
+	</mvt:if>
+	<div class="&mvte:global:Affiliate_Zip_Row;">
+		<label for="Affiliate_State" class="control-label required">Zip Code:</label>
+		<input type="text" name="Affiliate_Zip" id="Affiliate_Zip" value="&mvte:global:Affiliate_Zip;" class="form-control" />
+	</div>
+	<div class="&mvte:global:Affiliate_Country_Row;">
+		<label for="Affiliate_State" class="control-label required">Country:</label>
+		<mvt:item name="countries" param="Affiliate_Country" />
+	</div>
+	<mvt:if expr="NOT ISNULL g.AffiliateOptions:terms">
+		<div class="form_row">
+			<label class="control-label required">Terms:</label>
+			<div class="form-control-static">&mvt:global:AffiliateOptions:terms;</div>
+		</div>
+	</mvt:if>
+</div>

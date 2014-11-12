@@ -1,0 +1,96 @@
+<mvt:foreach iterator="attribute" array="attributes">
+	<div class="form-group">
+		<input type="hidden" name="Product_Attributes[&mvte:attribute:index;]:code" value="&mvte:attribute:code;" />
+		<mvt:if expr="l.settings:attribute:template_code NE 0">
+			<input type="hidden" name="Product_Attributes[&mvte:attribute:index;]:template_code" value="&mvte:attribute:template_code;" />
+		</mvt:if>
+		<mvt:if expr="l.settings:attribute:type EQ 'text'">
+			<mvt:if expr="l.settings:attribute:required">
+				<label for="Product_Attributes[&mvte:attribute:index;]:value" title="&mvte:attribute:prompt;" class="required col-md-4 control-label">&mvte:attribute:prompt;</label>
+			<mvt:else>
+				<label for="Product_Attributes[&mvte:attribute:index;]:value" title="&mvte:attribute:prompt;" class="col-md-4 control-label">&mvte:attribute:prompt;</label>
+			</mvt:if>
+			<div class="col-md-8">
+				<input type="text" name="Product_Attributes[&mvte:attribute:index;]:value" value="&mvte:attribute:value;" id="Product_Attributes[&mvte:attribute:index;]:value" class="form-control" />
+			</div>
+		<mvt:elseif expr="l.settings:attribute:type EQ 'memo'">
+			<mvt:if expr="l.settings:attribute:required">
+				<label for="Product_Attributes[&mvte:attribute:index;]:value" title="&mvte:attribute:prompt;" class="required col-md-4 control-label">&mvte:attribute:prompt;</label>
+			<mvt:else>
+				<label for="Product_Attributes[&mvte:attribute:index;]:value" title="&mvte:attribute:prompt;" class="col-md-4 control-label">&mvte:attribute:prompt;</label>
+			</mvt:if>
+			<div class="col-md-8">
+				<textarea name="Product_Attributes[&mvt:attribute:index;]:value" rows="3" id="Product_Attributes[&mvte:attribute:index;]:value" class="form-control">&mvte:attribute:value;</textarea>
+			</div>
+		<mvt:elseif expr="l.settings:attribute:type EQ 'radio'">
+			<mvt:if expr="l.settings:attribute:required">
+				<label for="Product_Attributes[&mvte:attribute:index;]:value" title="&mvte:attribute:prompt;" class="required col-md-4 control-label">&mvte:attribute:prompt;</label>
+			<mvt:else>
+				<label for="Product_Attributes[&mvte:attribute:index;]:value" title="&mvte:attribute:prompt;" class="col-md-4 control-label">&mvte:attribute:prompt;</label>
+			</mvt:if>
+			<div class="col-md-8">
+				<mvt:foreach iterator="option" array="attribute:options">
+					<label for="Product_Attributes[&mvte:attribute:index;]-&mvte:option:code;" title="&mvte:attribute:prompt;" class="radio-inline">
+						<mvt:if expr="((g.Product_Attributes[l.settings:attribute:index]:value EQ 0) AND (l.settings:option:id EQ l.settings:attribute:default_id)) OR (g.Product_Attributes[l.settings:attribute:index]:value EQ l.settings:option:code)">
+							<input type="radio" name="Product_Attributes[&mvte:attribute:index;]:value" value="&mvte:option:code;" id="Product_Attributes[&mvte:attribute:index;]-&mvte:option:code;" checked />
+						<mvt:else>
+							<input type="radio" name="Product_Attributes[&mvte:attribute:index;]:value" value="&mvte:option:code;" id="Product_Attributes[&mvte:attribute:index;]-&mvte:option:code;" />
+						</mvt:if>
+						<mvt:if expr="l.settings:option:image">
+							<img src="&mvte:option:image;" alt="&mvte:option:prompt;" title="&mvte:option:prompt;" />
+						<mvt:else>
+							&mvte:option:prompt;
+						</mvt:if>				
+					</label>
+				</mvt:foreach>
+			</div>
+		<mvt:elseif expr="(l.settings:attribute:type EQ 'select') OR (l.settings:attribute:type EQ 'swatch-select')">
+			<mvt:if expr="l.settings:attribute:required">
+				<label for="Product_Attributes[&mvte:attribute:index;]:value" title="&mvt:attribute:prompt;" class="required col-md-4 control-label">&mvt:attribute:prompt;</label>
+			<mvt:else>
+				<label for="Product_Attributes[&mvte:attribute:index;]:value" title="&mvt:attribute:prompt;" class="col-md-4 control-label">&mvt:attribute:prompt;</label>
+			</mvt:if>
+			<div class="col-md-8">
+				<select name="Product_Attributes[&mvt:attribute:index;]:value" id="Product_Attributes[&mvte:attribute:index;]:value" class="form-control">
+					<mvt:foreach iterator="option" array="attribute:options">
+						<mvt:if expr="((g.Product_Attributes[l.settings:attribute:index]:value EQ 0) AND (l.settings:option:id EQ l.settings:attribute:default_id)) OR (g.Product_Attributes[l.settings:attribute:index]:value EQ l.settings:option:code)">
+							<option value="&mvte:option:code;" selected>&mvte:option:prompt;</option>
+						<mvt:else>
+							<option value="&mvte:option:code;">&mvte:option:prompt;</option>
+						</mvt:if>
+					</mvt:foreach>
+				</select>
+			</div>
+		<mvt:elseif expr="l.settings:attribute:type EQ 'checkbox'">
+			<div class="col-md-offset-4 col-md-8">
+				<mvt:if expr="l.settings:attribute:required">
+					<label for="Product_Attributes[&mvte:attribute:index;]:value" title="&mvte:attribute:prompt;" class="required">
+						<mvt:if expr="g.Product_Attributes[l.settings:attribute:index]:value">
+							<input type="checkbox" name="Product_Attributes[&mvte:attribute:index;]:value" value="Yes" id="Product_Attributes[&mvte:attribute:index;]:value" checked />
+						<mvt:else>
+							<input type="checkbox" name="Product_Attributes[&mvte:attribute:index;]:value" id="Product_Attributes[&mvte:attribute:index;]:value" />
+						</mvt:if>
+						<mvt:if expr="l.settings:attribute:image">
+							<img src="&mvte:attribute:image;" alt="&mvte:attribute:prompt;" title="&mvte:attribute:prompt;" />
+						<mvt:else>
+							&mvte:attribute:prompt;
+						</mvt:if>				
+					</label>
+				<mvt:else>
+					<label for="Product_Attributes[&mvte:attribute:index;]:value" title="&mvte:attribute:prompt;">
+						<mvt:if expr="g.Product_Attributes[l.settings:attribute:index]:value">
+							<input type="checkbox" name="Product_Attributes[&mvte:attribute:index;]:value" value="Yes" id="Product_Attributes[&mvte:attribute:index;]:value" checked />
+						<mvt:else>
+							<input type="checkbox" name="Product_Attributes[&mvte:attribute:index;]:value" id="Product_Attributes[&mvte:attribute:index;]:value" />
+						</mvt:if>
+						<mvt:if expr="l.settings:attribute:image">
+							<img src="&mvte:attribute:image;" alt="&mvte:attribute:prompt;" title="&mvte:attribute:prompt;" />
+						<mvt:else>
+							&mvte:attribute:prompt;
+						</mvt:if>				
+					</label>
+				</mvt:if>
+			</div>
+		</mvt:if>
+	</div>
+</mvt:foreach>

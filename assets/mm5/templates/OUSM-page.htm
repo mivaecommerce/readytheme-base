@@ -1,0 +1,93 @@
+<mvt:item name="html_profile" file="cssui-html-profile-item.htm" />
+<head>
+	<title>&mvt:store:name;: &mvt:page:name;</title>
+	<base href="&mvt:global:basehref;" />
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" file="cssui-global-head-item.htm" />
+</head>
+<body class="&mvt:page:code;" id="JS_&mvt:page:code;">
+<div id="site-container">
+	<mvt:item name="hdft" param="global_header" file="global-header-item.htm" />
+	<mvt:item name="navbar" file="cssui-navbar-item.htm" />
+	<div class="items">
+		<div class="page-head">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>Special Offers</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<mvt:item name="hdft" param="header" file="OUSM-header-item.htm" />
+					<mvt:if expr="g.Upsold_Product_Count LE g.Upsell_Options:prod_sell OR g.Upsell_Options:prod_sell EQ 0">
+						<h1 class="color">You may select <em class="text-info">one or more</em> of the following:<br /><small>Offer valid for this order only</small></h1>
+					<mvt:elseif expr="g.Upsell_Options:prod_sell EQ 1">
+						<h1 class="color">You may select <em class="text-info">one</em> of the following:<br /><small>Offer valid for this order only</small></h1>
+					<mvt:else>
+						<h1 class="color">You may select up to <em class="text-info">&mvte:global:Upsell_Options:prod_sell;</em> of the following:<br /><small>Offer valid for this order only</small></h1>
+					</mvt:if>
+					<mvt:if expr="l.settings:messages:error_message_count">
+						<div class="alert alert-danger">
+							<mvt:foreach iterator="error" array="messages:error_messages"> &mvt:error; </mvt:foreach>
+						</div>
+						<mvt:elseif expr="l.settings:messages:information_message_count">
+						<div class="alert alert-info">
+							<mvt:foreach iterator="message" array="messages:information_messages"> &mvt:message; </mvt:foreach>
+						</div>
+					</mvt:if>
+					<form method="post" action="&mvt:global:secure_sessionurl;Screen=OSEL" class="form-horizontal" role="form">
+						<input type="hidden" name="Action" value="AUPM" />
+						<input type="hidden" name="Attributes" value="Yes" />
+						<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+						<input type="hidden" name="Upsell_Product_Count" value="&mvte:global:Upsold_Product_Count;" />
+						<mvt:item name="tax" />
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Buy</th>
+										<th>Code</th>
+										<th>Product</th>
+										<th>Regularly</th>
+										<th>Special</th>
+										<th>Save <MvEVAL EXPR="{l.formattedsavings}"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<mvt:foreach array="upsale" iterator="upsold_product">
+										<tr>
+											<td>
+												<mvt:if expr="l.settings:upsold_product:selected">
+													<input type="checkbox" name="Upsell_Selected[&mvt:upsold_product:index;]" value="Yes" checked />
+												<mvt:else>
+													<input type="checkbox" name="Upsell_Selected[&mvt:upsold_product:index;]" value="Yes" />
+												</mvt:if>
+												<input type="hidden" name="Product[&mvt:upsold_product:index;]:code" value="&mvte:upsold_product:code;" />
+											</td>
+											<td>&mvt:upsold_product:code;</td>
+											<td>&mvt:upsold_product:name;</td>
+											<td>&mvt:upsold_product:formatted_price;</td>
+											<td>&mvt:upsold_product:formatted_upsell_price;</td>
+											<td>&mvt:upsold_product:formatted_upsell_savings;</td>
+										</tr>
+									</mvt:foreach>
+								</tbody>
+							</table>
+						</div>
+						<div class="pull-right">
+							<mvt:item name="buttons" param="Continue" file="cssui-buttonContinue-item.htm" />
+						</div>
+					</form>
+					<mvt:item name="hdft" param="footer" file="OUSM-footer-item.htm" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<mvt:item name="hdft" param="global_footer" file="global-footer-item.htm" />
+</div>
+</body>
+</html>

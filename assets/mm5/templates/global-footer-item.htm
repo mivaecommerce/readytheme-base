@@ -1,0 +1,125 @@
+<!-- Footer starts -->
+<footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="widget">
+							<h5>About Us</h5>
+							<hr />
+							<mvt:item name="readytheme" param="contentsection( 'about-us-footer' )" />
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="widget">
+							<h5>Contact</h5>
+							<ul>
+								    <li id="address">
+    								<hr /><i class="icon-home"></i>
+                                    <div id="address-inner">
+                                        <span class="foot-address">&mvt:global:store:address;</span>
+                                        <span class="foot-city">&mvt:global:store:city;,</span>
+                                        <span class="foot-state">&mvt:global:store:state;,</span>
+                                        <span class="foot-zip">&mvt:global:store:zip;</span>
+                                    </div>
+                                    <div class="clearfix"></div>
+    							</li>
+								<li><hr /><i class="icon-phone"></i><span class="foot-phone">&mvt:global:store:phone;</span></li>
+								<li><hr /><i class="icon-envelope-alt"></i><a href="mailto:&mvt:global:store:email;" class="foot-email">&mvt:global:store:email;</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="widget">
+							<h5>Navigation</h5>
+							<hr />
+							<div class="two-col">
+								<div class="col-left">
+									<mvt:item name="readytheme" param="navigationset( 'footer-nav-col1' )" />
+								</div>
+								<div class="col-right">
+									<mvt:item name="readytheme" param="navigationset( 'footer-nav-col2' )" />
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<mvt:if expr="l.settings:readytheme:social_active EQ 1">
+							<div class="widget">
+								<h5>Social</h5>
+								<hr />
+								<div class="social">
+									<mvt:if expr="NOT ISNULL l.settings:readytheme:social_facebook">
+										<a href="&mvt:readytheme:social_facebook;" target="_blank"><i class="icon-facebook facebook"></i></a>
+									</mvt:if>
+
+									<mvt:if expr="NOT ISNULL l.settings:readytheme:social_twitter">
+										<a href="&mvt:readytheme:social_twitter;" target="_blank"><i class="icon-twitter twitter"></i></a>
+									</mvt:if>
+
+									<mvt:if expr="NOT ISNULL l.settings:readytheme:social_instagram">
+										<a href="&mvt:readytheme:social_instagram;" target="_blank"><i class="icon-instagram instagram"></i></a>
+									</mvt:if>
+
+									<mvt:if expr="NOT ISNULL l.settings:readytheme:social_googleplus">
+										<a href="&mvt:readytheme:social_googleplus;" target="_blank"><i class="icon-google-plus google-plus"></i></a>
+									</mvt:if>
+
+									<mvt:if expr="NOT ISNULL l.settings:readytheme:social_pinterest">
+										<a href="&mvt:readytheme:social_pinterest;" target="_blank"><i class="icon-pinterest pinterest"></i></a>
+									</mvt:if>
+
+									<mvt:if expr="NOT ISNULL l.settings:readytheme:social_vimeo">
+										<a href="&mvt:readytheme:social_vimeo;" target="_blank"><i class="icon-vimeo-square vimeo"></i></a>
+									</mvt:if>
+
+									<mvt:if expr="NOT ISNULL l.settings:readytheme:social_youtube">
+										<a href="&mvt:readytheme:social_youtube;" target="_blank"><i class="icon-youtube youtube"></i></a>
+									</mvt:if>
+
+									<mvt:if expr="NOT ISNULL l.settings:readytheme:social_flickr">
+										<a href="&mvt:readytheme:social_flickr;" target="_blank"><i class="icon-flickr flickr"></i></a>
+									</mvt:if>						
+								</div>
+								<br />
+						</mvt:if>
+							
+							<h5>Payment</h5>
+							<hr />
+							<div class="payment-icons">
+								<img src="graphics/%STORE_ID%/images/americanexpress.gif" alt="American Express" title ="American Express" />
+								<img src="graphics/%STORE_ID%/images/visa.gif" alt="Visa" title="Visa" />
+								<img src="graphics/%STORE_ID%/images/mastercard.gif" alt="MasterCard" title="MasterCard" />
+								<img src="graphics/%STORE_ID%/images/discover.gif" alt="Discover" title="Discover" />
+								<img src="graphics/%STORE_ID%/images/paypal.gif" alt="PayPal" title="PayPal" />
+							</div>
+							<div class="clearfix"></div>
+						</div>
+                        
+                        <mvt:item name="readytheme" param="trustsymbol" />   
+
+					</div>
+				</div>
+				<hr />
+				<!-- Copyright info -->
+				<p class="copy">Copyright &copy; <mvt:eval expr="s.tm_year" /> &mvt:global:store:name; | <mvt:item name="cssui_links" param="storefront">Home</mvt:item> | <mvt:item name="cssui_links" param="sitemap">Site Map</mvt:item> | Ecommerce Shopping Cart Software by <a target="_blank" href="http://www.mivamerchant.com/">Miva Merchant</a></p>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</footer>
+
+<!-- Footer ends --> 
+
+<!-- Scroll to top --> 
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span> 
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>window.jQuery || document.write(unescape('%3Cscript src="../js/jquery.js"%3E%3C/script%3E'))</script>
+<script src="js/bootstrap.js"></script> <!-- Bootstrap --> 
+<script src="js/custom.js"></script> <!-- Custom codes -->
+
+<mvt:item name="ga_tracking" />

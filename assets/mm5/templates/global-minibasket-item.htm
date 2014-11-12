@@ -1,0 +1,11 @@
+<mvt:if expr="NOT l.settings:global_minibasket:empty">
+	<a href="&mvt:global:secure_sessionurl;Screen=OINF&amp;Store_Code=&mvta:store:code;" class="btn btn-primary hidden-xs float-right">Checkout</a>
+	<a href="#cart" role="button" data-toggle="modal" class="basket-count float-right hidden-xs"><i class="icon-shopping-cart"></i> <span class="hidden-xs hidden-sm">&mvte:global_minibasket:basket_count;</span> <i class="icon-caret-down"></i></a>
+	<!-- XS a tags -->
+	<a href="#cart" role="button" data-toggle="modal" class="hidden-lg hidden-md hidden-sm xs-cart"><i class="icon-shopping-cart"><span>&mvte:global_minibasket:basket_count;</span></i></a>
+<mvt:else>
+	<a href="&mvt:global:secure_sessionurl;Screen=OINF&amp;Store_Code=&mvta:store:code;" class="btn btn-primary hidden-xs float-right">Checkout</a>
+	<a href="&mvt:global:secure_sessionurl;Screen=BASK&amp;Store_Code=&mvta:store:code;" class="basket-count float-right hidden-xs"><i class="icon-shopping-cart"></i> &mvte:global_minibasket:basket_count; <i class="icon-caret-down"></i></a>
+	<!-- XS a tags -->
+	<a href="&mvt:global:secure_sessionurl;Screen=BASK&amp;Store_Code=&mvta:store:code;" class="hidden-lg hidden-md hidden-sm xs-cart"><i class="icon-shopping-cart"><span>&mvte:global_minibasket:basket_count;</span></i></a>
+</mvt:if>

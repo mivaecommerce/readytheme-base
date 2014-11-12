@@ -1,0 +1,106 @@
+<mvt:if expr="l.settings:basket:empty">
+	Your shopping basket is currently empty.
+	<p><mvt:item name="cssui_links" param="storefront">Home</mvt:item></p>
+	<mvt:exit />
+</mvt:if>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12"> 
+			<h3 class="title">Items in your cart</h3>
+			<table class="table table-striped tcart">
+				<thead>
+					<tr>
+						<th class="hidden-xs">&nbsp;</th>
+						<th>Name</th>
+						<th class="text-center">Quantity</th>
+						<th class="text-right">Unit Price</th>
+						<th class="text-right">Total</th>
+					</tr>
+				</thead>
+				<tbody>
+					<mvt:foreach iterator="group" array="basket:groups">
+						<tr>
+							<mvt:if expr="l.settings:group:imagetypes:main">
+								<td class="image-row hidden-xs col-md-1"><img src="&mvte:group:imagetypes:main;" alt="&mvt:group:name;" title="&mvt:group:name;" /></td>
+							<mvt:else>
+								<td class="image-row hidden-xs col-md-1">&nbsp;</td>
+							</mvt:if>
+							<td class="name-row">
+								&mvt:group:name;
+								<mvt:if expr="l.settings:group:upsold">
+									&nbsp;(Special Offer)
+								</mvt:if>
+								<mvt:foreach iterator="discount" array="group:discounts">
+									<mvt:if expr="l.settings:discount:display">
+										<div class="item-discount">&mvt:discount:descrip;: &mvt:discount:formatted_discount;</div>
+									</mvt:if>
+								</mvt:foreach>
+								<mvt:foreach iterator="option" array="group:options">
+									<br />
+									<mvt:if expr="l.settings:option:option_id">
+										&mvt:option:attr_code;: &mvt:option:opt_code;
+									<mvt:elseif expr="NOT ISNULL l.settings:option:data">
+										&mvt:option:attr_code;: &mvt:option:data;
+									<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
+										&mvt:option:attr_code;: &mvt:option:data_long;
+									<mvt:else>
+										&mvt:option:attr_code;
+									</mvt:if>
+									<mvt:foreach iterator="discount" array="option:discounts">
+										<mvt:if expr="l.settings:discount:display">
+											<div class="item-discount">&mvt:discount:descrip;: &mvt:discount:formatted_discount;</div>
+										</mvt:if>
+									</mvt:foreach>
+								</mvt:foreach>
+							</td>
+							<td class="item-input qty-row text-center">&mvt:group:quantity;</td>
+							<td class="price-row col-sm-1 text-right">
+								&mvt:group:formatted_base_price;
+
+								<mvt:foreach iterator="option" array="group:options">
+									<br />
+									<mvt:if expr="l.settings:option:base_price">
+										&mvt:option:formatted_base_price;
+									<mvt:else>
+										&nbsp;
+									</mvt:if>
+								</mvt:foreach>
+
+							</td>
+							<td class="total-row col-sm-1 text-right">
+								
+								<mvt:if expr="l.settings:group:subtotal_base_price NE l.settings:group:subtotal">
+									<span style="text-decoration: line-through;">&mvt:group:formatted_subtotal_base_price;</span>
+								</mvt:if>
+								&mvt:group:formatted_subtotal;
+
+								<mvt:foreach iterator="option" array="group:options">
+									<br />
+									<mvt:if expr="l.settings:option:subtotal_base_price OR l.settings:option:subtotal">
+										<mvt:if expr="l.settings:option:subtotal_base_price NE l.settings:option:subtotal">
+											<span style="text-decoration: line-through;">&mvt:option:formatted_subtotal_base_price;</span>
+										</mvt:if>
+										&mvt:option:formatted_subtotal;
+									<mvt:else>
+										&nbsp;
+									</mvt:if>
+								</mvt:foreach>
+
+							</td>
+						</tr>
+					</mvt:foreach>
+				</tbody>
+			</table>
+			<div id="basket-footer">
+				<mvt:foreach iterator="charge" array="basket:charges">
+				<div class="basket-charges col-md-12">
+					<p class="formatted-charge text-right">&mvt:charge:descrip;: &mvt:charge:formatted_disp_amt;</p>
+				</div>
+				</mvt:foreach>
+				<div id="basket-totals" class="col-md-12">
+					<p class="formatted-total text-right">Total: &mvt:basket:formatted_total;</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

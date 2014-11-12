@@ -1,0 +1,71 @@
+<mvt:item name="html_profile" file="cssui-html-profile-item.htm" />
+<head>
+	<title>&mvt:store:name;: Checkout: Customer Login</title>
+	<base href="&mvt:global:basehref;" />
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" file="cssui-global-head-item.htm" />
+</head>
+<body class="&mvt:page:code;" id="JS_&mvt:page:code;">
+<div id="site-container">
+	<mvt:item name="hdft" param="global_header" file="global-header-item.htm" />
+	<mvt:item name="navbar" file="cssui-navbar-item.htm" />
+	<div class="items">
+		<div class="page-head">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2><i class="icon-shopping-cart"></i> Checkout</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<mvt:item name="hdft" param="header" file="ORDL-header-item.htm" />
+					<form name="logn" action="&mvt:global:secure_sessionurl;" method="post" autocomplete="off" role="form">
+						<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+						<input type="hidden" name="Screen" value="OCST" />
+						<input type="hidden" name="Action" value="LOGN" />
+						<div class="col-md-4 col-sm-4 text-center">
+							<h3>Create New Account</h3>
+							<a href="&mvt:global:secure_sessionurl;Store_Code=&mvta:store:code;&amp;Order=1&amp;Screen=ACAD" class="btn btn-default">Create Account</a>
+						</div>
+						<div class="col-md-4 col-sm-4 clearfix">
+							<h3>Sign In</h3>
+							<mvt:if expr="l.settings:messages:error_message_count">
+								<div class="alert alert-danger">
+									<mvt:foreach iterator="error" array="messages:error_messages"> &mvt:error; </mvt:foreach>
+								</div>
+								<mvt:elseif expr="l.settings:messages:information_message_count">
+								<div class="alert alert-info">
+									<mvt:foreach iterator="message" array="messages:information_messages"> &mvt:message; </mvt:foreach>
+								</div>
+							</mvt:if>
+							<div class="form-group">
+								<label for="Customer_LoginEmail">Email Address:</label>
+								<input type="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" id="Customer_LoginEmail" class="form-control" autocomplete="off" placeholder="Enter Address" />
+							</div>
+							<div class="form-group">
+								<label for="Customer_Password">Password:</label>
+								<input type="password" name="Customer_Password" id="Customer_Password" class="form-control" autocomplete="off" placeholder="Password" />
+							</div>
+							<div class="form-group">
+								<a href="&mvt:global:secure_sessionurl;Store_Code=&mvta:store:code;&amp;Screen=FPWD" class="btn btn-link btn-xs pull-left">Forgot password?</a>
+								<mvt:item name="buttons" param="login" file="cssui-buttonlogin-item.htm" />
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4 text-center">
+							<h3>Express Checkout</h3>
+							<a href="&mvt:global:secure_sessionurl;Store_Code=&mvta:store:code;&amp;Screen=OCST" class="btn btn-primary">Proceed to Checkout</a>
+						</div>
+					</form>
+					<mvt:item name="hdft" param="footer" file="ORDL-footer-item.htm" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<mvt:item name="hdft" param="global_footer" file="global-footer-item.htm" />
+</div>
+</body>
+</html>

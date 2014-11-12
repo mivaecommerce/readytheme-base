@@ -1,0 +1,21 @@
+<hr />
+<h4 class="subcategory-title">Subcategories in &mvte:category:name;</h4>
+<div class="clearfix"></div>
+<div class="subcategory-listing col-md-12 container-fluid clearfix">
+	<mvt:foreach iterator="sub_category" array="subcats">
+		<div class="col-md-4 col-sm-4 col-xs-6 subcategory-wrapper">
+			<div class="subcategory-item box-shadow">
+				<div class="item-image">
+				<mvt:if expr="l.settings:sub_category:image">
+					<a href="&mvt:sub_category:link;"><img src="&mvt:sub_category:image;" class="img-responsive" alt="Shop &mvte:sub_category:name; Now" title="Shop &mvte:sub_category:name; Now" /></a>
+				<mvt:else>
+					<a href="&mvt:sub_category:link;"><img src="http://placehold.it/150x150&text=150x150+image" class="img-responsive" alt="Shop &mvte:sub_category:name; Now" title="Shop &mvte:sub_category:name; Now" /></a>
+				</mvt:if>					
+				</div>
+				<div class="item-details">
+					<h5><a href="&mvt:sub_category:link;">&mvte:sub_category:name;</a></h5>
+				</div>
+			</div>
+		</div>
+	</mvt:foreach>
+</div>

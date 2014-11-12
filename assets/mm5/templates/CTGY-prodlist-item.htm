@@ -1,0 +1,22 @@
+<mvt:foreach iterator="product" array="category_listing:products">
+	<div class="col-md-3 col-sm-4 col-xs-6">
+		<div class="category-item">
+			<div class="item-image">
+				<mvt:if expr="NOT ISNULL l.settings:product:imagetypes:main">
+					<a href="&mvte:product:link;"><img src="&mvte:product:imagetypes:main;" alt="&mvte:product:name;" class="img-responsive" /></a>
+				<mvt:else>
+					<a href="&mvte:product:link;"><img src="&mvte:product:thumbnail;" alt="&mvte:product:name;" class="img-responsive" /></a>
+				</mvt:if>
+			</div>
+			<div class="item-details">
+				
+				<h5><a href="&mvte:product:link;">&mvt:product:name;</a></h5>
+				
+				<div class="item-price">&mvt:product:formatted_price;</div>
+				<div class="button"><a href="&mvte:product:link;">More Info</a></div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+</mvt:foreach>
+<div class="clearfix"></div>

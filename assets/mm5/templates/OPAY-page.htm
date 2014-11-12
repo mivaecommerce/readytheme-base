@@ -1,0 +1,88 @@
+<mvt:item name="html_profile" file="cssui-html-profile-item.htm" />
+<head>
+	<title>&mvt:store:name;: Checkout: Payment Information</title>
+	<base href="&mvt:global:basehref;" />
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" file="cssui-global-head-item.htm" />
+</head>
+<body class="&mvt:page:code;" id="JS_&mvt:page:code;">
+<div id="site-container">
+	<mvt:item name="hdft" param="global_header" file="global-header-item.htm" />
+	<mvt:item name="navbar" file="cssui-navbar-item.htm" />
+	<div class="items">
+		<div class="page-head">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2><i class="icon-shopping-cart"></i> &mvt:page:name;</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<mvt:item name="hdft" param="header" file="OPAY-header-item.htm" />
+					<form method="post" action="&mvt:payment:url;" role="form" id="opay-form" class="form-horizontal clearfix">
+						<input type="hidden" name="Screen" value="INVC" />
+						<input type="hidden" name="Action" value="AUTH" />
+						<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+						<mvt:if expr="l.settings:messages:error_message_count">
+							<div class="alert alert-danger">
+								<mvt:foreach iterator="error" array="messages:error_messages">
+									&mvt:error;
+								</mvt:foreach>
+							</div>
+						</mvt:if>
+						<mvt:if expr="l.settings:messages:information_message_count">
+							<div class="alert alert-info">
+								<mvt:foreach iterator="message" array="messages:information_messages">
+									&mvt:message;
+								</mvt:foreach>
+							</div>
+						</mvt:if>
+						<div id="payment">
+							<mvt:item name="payment" />
+						</div>
+						<h2>Payment Method: &mvt:payment:desc;</h2>
+						<input type="hidden" name="PaymentMethod" value="&mvte:global:PaymentMethod;" />
+						<mvt:if expr="NOT ISNULL l.settings:payment:desc">
+							<strong></strong>
+						</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:payment:message">
+							&mvt:payment:message;<br />
+						</mvt:if>
+						<div id="payment-fields">
+							<mvt:foreach array="payment:fields" iterator="field">
+								<div id="js-&mvt:field:code;" class="form-group">
+									<mvt:if expr="l.settings:field:invalid">
+										<label class="col-lg-2 control-label red">&mvt:field:prompt;</label>
+									<mvt:else>
+										<label class="col-lg-2 control-label">&mvt:field:prompt;</label>
+									</mvt:if>
+									<div class="col-lg-4">
+										<mvt:item name="payment" param="field:code" />
+									</div>
+								</div>
+							</mvt:foreach>
+						</div>
+						<br />
+						<div class="text-right col-md-12">
+							<mvt:item name="buttons" param="Continue" file="cssui-buttonContinue-item.htm" />
+						</div>
+						<div id="customer-fields" class="non-editable clearfix">
+							<mvt:item name="customer" file="OPAY-custflds-item.htm" />
+						</div>
+						<div id="basket-contents" class="non-editable cart table-responsive clearfix">
+							<mvt:item name="basket" file="OPAY-basket-item.htm" />
+						</div>
+					</form>
+					<mvt:item name="hdft" param="footer" file="OPAY-footer-item.htm" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<mvt:item name="hdft" param="global_footer" file="global-footer-item.htm" />
+</div>
+</body>
+</html>

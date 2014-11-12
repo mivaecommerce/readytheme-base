@@ -1,0 +1,117 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12"> 
+			<h3 class="title">Items in your order</h3>
+			<table class="table table-striped tcart">
+				<thead>
+					<tr>
+						<th class="hidden-xs">&nbsp;</th>
+						<th>Name</th>
+						<th class="text-center">Quantity</th>
+						<th class="text-right">Unit Price</th>
+						<th class="text-right">Total</th>
+					</tr>
+				</thead>
+				<tbody>
+					<mvt:foreach iterator="item" array="order:groups">
+						<tr>
+							<mvt:if expr="l.settings:item:imagetypes:main">
+								<td class="image-row hidden-xs col-md-1"><img src="&mvte:item:imagetypes:main;" alt="&mvt:item:name;" title="&mvt:item:name;" /></td>
+							<mvt:else>
+								<td class="image-row hidden-xs col-md-1">&nbsp;</td>
+							</mvt:if>
+							<td class="name-row">
+								&mvt:item:name;
+								<mvt:if expr="l.settings:item:upsold">
+									&nbsp;(Special Offer)
+								</mvt:if>
+								<mvt:foreach iterator="discount" array="item:discounts">
+									<mvt:if expr="l.settings:discount:display">
+										<div class="item-discount">&mvt:discount:descrip;: &mvt:discount:formatted_discount;</div>
+									</mvt:if>
+								</mvt:foreach>
+								<mvt:foreach iterator="option" array="item:options">
+									<br />
+									<mvt:if expr="l.settings:option:option_id">
+										&mvt:option:attr_code;: &mvt:option:opt_code;
+									<mvt:elseif expr="NOT ISNULL l.settings:option:data">
+										&mvt:option:attr_code;: &mvt:option:data;
+									<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
+										&mvt:option:attr_code;: &mvt:option:data_long;
+									<mvt:else>
+										&mvt:option:attr_code;
+									</mvt:if>
+									<mvt:foreach iterator="discount" array="option:discounts">
+										<mvt:if expr="l.settings:discount:display">
+											<div class="item-discount">&mvt:discount:descrip;: &mvt:discount:formatted_discount;</div>
+										</mvt:if>
+									</mvt:foreach>
+								</mvt:foreach>
+							</td>
+							<td class="item-input qty-row text-center">&mvt:item:quantity;</td>
+							<td class="price-row col-sm-1 text-right">
+								&mvt:group:formatted_base_price;
+
+								<mvt:foreach iterator="option" array="item:options">
+									<br />
+									<mvt:if expr="l.settings:option:base_price">
+										&mvt:option:formatted_base_price;
+									<mvt:else>
+										&nbsp;
+									</mvt:if>
+								</mvt:foreach>
+							</td>
+							<td class="total-row col-sm-1 text-right">
+								<mvt:if expr="l.settings:item:subtotal_base_price NE l.settings:item:subtotal">
+									<span style="text-decoration: line-through;">&mvt:item:formatted_subtotal_base_price;</span>
+								</mvt:if>
+								&mvt:item:formatted_subtotal;
+
+								<mvt:foreach iterator="option" array="item:options">
+									<br />
+									<mvt:if expr="l.settings:option:subtotal_base_price OR l.settings:option:subtotal">
+										<mvt:if expr="l.settings:option:subtotal_base_price NE l.settings:option:subtotal">
+											<span style="text-decoration: line-through;">&mvt:option:formatted_subtotal_base_price;</span>
+										</mvt:if>
+										&mvt:option:formatted_subtotal;
+									<mvt:else>
+										&nbsp;
+									</mvt:if>
+								</mvt:foreach>
+							</td>
+						</tr>
+					</mvt:foreach>
+				</tbody>
+			</table>
+			<div id="basket-footer">
+				<mvt:foreach iterator="charge" array="order:charges">
+				<div class="basket-charges col-md-4 col-md-offset-8">
+					<p class="formatted-charge text-right">&mvt:charge:descrip;: &mvt:charge:formatted_disp_amt;</p>
+				</div>
+				</mvt:foreach>
+				<div id="basket-totals" class="col-md-12">
+					<p class="formatted-total text-right">Total: &mvt:order:formatted_total;</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<mvt:assign name="g.coupon_count" value="miva_array_elements( l.settings:order:coupons )" />
+
+<mvt:if expr="g.coupon_count GT 0">
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+		<h3 class="title">Coupons Applied To This Order</h3>
+			<mvt:foreach iterator="coupon" array="order:coupons">
+				Coupon - <span class="item-code">&mvt:coupon:code;</span>
+				<div class="item-discount">&mvt:coupon:descrip;</div>
+			</mvt:foreach>
+
+		</div>
+	</div>
+</div>
+
+</mvt:if>

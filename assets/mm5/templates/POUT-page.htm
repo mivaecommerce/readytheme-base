@@ -1,0 +1,63 @@
+<mvt:item name="html_profile" file="cssui-html-profile-item.htm" />
+<head>
+	<title>&mvt:store:name;: &mvt:page:name;</title>
+	<base href="&mvt:global:basehref;" />
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" file="cssui-global-head-item.htm" />
+</head>
+<body class="&mvt:page:code;" id="JS_&mvt:page:code;">
+<div id="site-container">
+	<mvt:item name="hdft" param="global_header" file="global-header-item.htm" />
+	<mvt:item name="navbar" file="cssui-navbar-item.htm" />
+	<div class="items">
+		<div class="page-head">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>&mvt:page:name;</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-sm-3 hidden-xs">
+						<mvt:item name="category_tree" file="" />
+					</div>
+					<div class="col-md-9 col-sm-9">
+						<mvt:item name="breadcrumbs" />
+						<mvt:item name="hdft" param="header" file="POUT-header-item.htm" />
+						<mvt:if expr="l.settings:messages:error_message_count">
+							<div class="alert alert-danger">
+								<mvt:foreach iterator="error" array="messages:error_messages"> &mvt:error; </mvt:foreach>
+							</div>
+							<mvt:elseif expr="l.settings:messages:information_message_count">
+							<div class="alert alert-info">
+								<mvt:foreach iterator="message" array="messages:information_messages"> &mvt:message; </mvt:foreach>
+							</div>
+						</mvt:if>
+						<form method="post" action="&mvt:global:sessionurl;">
+							<input type="hidden" name="Screen" value="&mvte:global:Old_Screen;" />
+							<input type="hidden" name="Search" value="&mvte:global:Old_Search;" />
+							<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+							<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;" />
+							<input type="hidden" name="Current_Product_Code" value="&mvte:global:Current_Product_Code;" />
+							<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;" />
+							<input type="hidden" name="Offset" value="&mvte:global:Offset;" />
+							<input type="hidden" name="AllOffset" value="&mvte:global:AllOffset;" />
+							<input type="hidden" name="CatListingOffset" value="&mvte:global:CatListingOffset;" />
+							<input type="hidden" name="RelatedOffset" value="&mvte:global:RelatedOffset;" />
+							<input type="hidden" name="SearchOffset" value="&mvte:global:SearchOffset;" />
+							<mvt:item name="buttons" param="Back" file="cssui-buttonBack-item.htm" />
+						</form>
+						<mvt:item name="hdft" param="footer" file="POUT-footer-item.htm" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<mvt:item name="hdft" param="global_footer" file="global-footer-item.htm" />
+</div>
+</body>
+</html>

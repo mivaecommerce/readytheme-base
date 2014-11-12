@@ -1,0 +1,29 @@
+<div class="col-md-12">
+<mvt:if expr="g.form EQ 'newsletter' AND g.pbm EQ 'sent'">
+	<br />
+	<h3>We're sorry, there was a problem processing your request.</h3>
+	<p>Please resubmit your email address to join our mailing list or <mvt:item name="cssui_links" param="screen:CTUS">Contact Us</mvt:item>.</p>
+</mvt:if>
+<mvt:if expr="g.form EQ 'contact' AND g.pbm EQ 'sent'">
+	<br />
+	<h3>We're sorry, there was a problem processing your request.</h3>
+	<p>Please return to the <mvt:item name="cssui_links" param="screen:CTUS">Contact Us</mvt:item> page and resubmit your request.</p>
+</mvt:if>
+<mvt:if expr="g.form EQ 'contact' AND g.pbm EQ 'time'">
+	<br />
+	<h3>We're sorry, there was a problem processing your request.</h3>
+	<p>Your session has expired.</p>
+	<p>Please return to the <mvt:item name="cssui_links" param="screen:CTUS">Contact Us</mvt:item> page and resubmit your request.</p>
+</mvt:if>
+<mvt:if expr="g.form EQ 'taf' AND g.pbm EQ 'sent'">
+	<br />
+	<h3>We're sorry, there was a problem processing your request.</h3>
+	<p>Please return to the <a href="javascript:history.go(-1)">previous page</a> and resubmit your request.</p>
+</mvt:if>
+<mvt:if expr="g.form EQ 'taf' AND g.pbm EQ 'time'">
+	<br />
+	<h3>We're sorry, there was a problem processing your request.</h3>
+	<p>Your session has expired.</p>
+	<p>Please return to the <a href="javascript:history.go(-1)">previous page</a> and resubmit your request.</p>
+</mvt:if>
+</div>
