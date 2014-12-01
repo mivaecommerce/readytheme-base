@@ -1,3 +1,13 @@
+<script language="JavaScript">
+<!--
+function ReloadForm( form_field )
+{
+	document.location.reload();
+	document.getElementsByName( "OrderDetails_Format" ).value = form_field;
+}
+//-->
+</script>
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-12"> 
@@ -14,7 +24,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<mvt:foreach iterator="item" array="order:items">
+					<mvt:foreach iterator="item" array="order:groups">
 						<tr>
 							<td>
 								<mvt:if expr="l.settings:item:reorder EQ 1">
@@ -28,6 +38,11 @@
 								<mvt:if expr="l.settings:item:upsold">
 									&nbsp;(Special Offer)
 								</mvt:if>
+								<mvt:foreach iterator="discount" array="item:discounts">
+									<mvt:if expr="l.settings:discount:display">
+										<div class="item-discount">&mvt:discount:descrip;: &mvt:discount:formatted_discount;</div>
+									</mvt:if>
+								</mvt:foreach>
 								<mvt:foreach iterator="option" array="item:options">
 									<br />
 									<mvt:if expr="l.settings:option:option_id">
@@ -39,16 +54,21 @@
 									<mvt:else>
 										&mvt:option:attr_code;
 									</mvt:if>
+								<mvt:foreach iterator="discount" array="option:discounts">
+									<mvt:if expr="l.settings:discount:display">
+										<div class="item-discount">&mvt:discount:descrip;: &mvt:discount:formatted_discount;</div>
+									</mvt:if>
+								</mvt:foreach>
 								</mvt:foreach>
 							</td>
 							<td class="item-input">&mvt:item:order_status;</td>
 							<td>&mvt:item:quantity;</td>
 							<td>
-								&mvt:item:formatted_price;
+								&mvt:item:formatted_base_price;
 								<mvt:foreach iterator="option" array="item:options">
 									<br />
-									<mvt:if expr="l.settings:option:price">
-										&mvt:option:formatted_price;
+									<mvt:if expr="l.settings:option:base_price">
+										&mvt:option:formatted_base_price;
 									<mvt:else>
 										&nbsp;
 									</mvt:if>
@@ -58,7 +78,10 @@
 								&mvt:item:formatted_subtotal;
 								<mvt:foreach iterator="option" array="item:options">
 									<br />
-									<mvt:if expr="l.settings:option:price">
+									<mvt:if expr="l.settings:option:subtotal_base_price OR l.settings:option:subtotal">
+										<mvt:if expr="l.settings:option:subtotal_base_price NE l.settings:option:subtotal">
+											<span style="text-decoration: line-through;">&mvt:option:formatted_subtotal_base_price;</span>
+										</mvt:if>
 										&mvt:option:formatted_subtotal;
 									<mvt:else>
 										&nbsp;

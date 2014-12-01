@@ -31,7 +31,9 @@
 						<mvt:if expr="ISNULL g.Error_Messages">
 							<h4 class="text-danger">The resource you requested is not available at this time.</h4>
 						<mvt:else>
-							<h4 class="text-danger">&mvte:global:Error_Messages;</h4>
+							<mvt:foreach iterator="error" array="messages:error_messages">
+								<h4 class="text-danger">&mvt:error;</h4>
+							</mvt:foreach>
 						</mvt:if>
 						<mvt:item name="hdft" param="footer" file="NTFD-footer-item.htm" />
 					</div>
@@ -42,4 +44,4 @@
 	<mvt:item name="hdft" param="global_footer" file="global-footer-item.htm" />
 </div>
 </body>
-</html>
+</html>

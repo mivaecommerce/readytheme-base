@@ -11,7 +11,8 @@
 		</div>
 		<div class="col-md-6 col-sm-6"> 
 			<!-- Title -->
-			<h3>Price: <span id="price-value">&mvt:product:formatted_price;</span></h3>
+			<h3>Price: <span id="price-value-additional" style="text-decoration: line-through"></span> <span id="price-value">&mvt:product:formatted_base_price;</span></h3>
+                        <div id="product-discounts"></div>
 			<mvt:if expr="l.settings:product:sku">
 				<p>Code: &mvt:product:sku;</p>
 			<mvt:else>

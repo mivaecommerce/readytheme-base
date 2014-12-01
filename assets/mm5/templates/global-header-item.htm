@@ -45,7 +45,11 @@
 				<div class="row search-row">
 					<div class="col-md-8 v-center"> 
 						<!-- Search form -->
-						<form method="post" action="&mvt:global:sessionurl;Screen=SRCH" class="form-inline clearfix center-block" role="form">
+						<mvt:if expr="NOT ISNULL g.secure">
+							<form method="post" action="&mvte:global:secure_sessionurl;Screen=SRCH" class="form-inline clearfix center-block" role="form">
+						<mvt:else>
+							<form method="post" action="&mvte:global:sessionurl;Screen=SRCH" class="form-inline clearfix center-block" role="form">
+						</mvt:if>
 							<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
 							<div class="form-group col-xs-10">
 								<input type="text" name="Search" value="&mvte:global:Search;" id="search" class="form-control" placeholder="Search Products" />
@@ -211,7 +215,11 @@
 				</div>
 				<div class="modal-body">
 					<!-- Search form -->
-					<form method="post" action="&mvt:global:sessionurl;Screen=SRCH" class="form-inline clearfix center-block" role="form">
+					<mvt:if expr="NOT ISNULL g.secure">
+						<form method="post" action="&mvte:global:secure_sessionurl;Screen=SRCH" class="form-inline clearfix center-block" role="form">
+					<mvt:else>
+						form method="post" action="&mvte:global:sessionurl;Screen=SRCH" class="form-inline clearfix center-block" role="form">
+					</mvt:if>
 						<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
 						<div class="form-group col-xs-10">
 							<input type="text" name="Search" value="&mvte:global:Search;" id="search" class="form-control" placeholder="Search Products" />
